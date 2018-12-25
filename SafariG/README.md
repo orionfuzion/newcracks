@@ -43,6 +43,7 @@ Safari Guns comes on two floppy disks:
   2 executable programs (in the auto folder):
   * the intro, a GFA compiled program.
   * the game, a C compiled program.  
+  
   The second side of the first disk contains the intro music sample
   stored on sectors directly without a filesystem.  
 * The second disk has only one side containing 80 tracks with 10 sectors
