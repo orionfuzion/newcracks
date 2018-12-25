@@ -36,17 +36,16 @@ and the work needed to support the Falcon machine.
 Please look at *LOADER.S* for the implementation of all the stuffs described hereafter.
 
 Safari Guns comes on two floppy disks:
-1. The first disk has two independent sides. Both sides have 80 tracks
+* The first disk has two independent sides. Both sides have 80 tracks
   (0-79), but the first side has 10 sectors per track, while the second
   side has only 9 sectors per track.  
   The first side of the first disk contains 32 data files and
   2 executable programs (in the auto folder):
   * the intro, a GFA compiled program.
   * the game, a C compiled program.  
-  
   The second side of the first disk contains the intro music sample
-  stored on sectors directly without a filesystem.
-2. The second disk has only one side containing 80 tracks with 10 sectors
+  stored on sectors directly without a filesystem.  
+* The second disk has only one side containing 80 tracks with 10 sectors
   per track.  
   This disk contains 100 data files.
 
