@@ -5,6 +5,8 @@ Cracked, mega-trained, partly-filed, packed, linked, ramdisk, bug-fixed.
 
 December 25, 2018 - Orion of The Replicants.
 
+2nd Release - April 24, 2019 - Fixed Xmas intro & 68060 support.
+
 This game can be run from a hard drive. Just copy all files present
 on this floppy disk into a folder on your hard drive, move the
 the SAFARI.PRG program from the AUTO folder to the folder where

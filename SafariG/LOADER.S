@@ -3,7 +3,7 @@
 * Safari Guns 100% - with game intro & multi-languages support
 *
 * Cracked, mega-trained, partly-filed, packed, linked, ramdisk, bug-fixed.
-* 512KB, hard-drive and Falcon support.
+* 512KB, hard-drive and Falcon/CT60/TT support.
 *
 * December 25, 2018 - Orion of The Replicants.
 *
@@ -1534,7 +1534,8 @@ buff_marg:	dcb.b	$90+DEC_SPACE+$C
 *
 * Here are technical details about the game that help you understand the
 * following routines used to neutralize the copy-protection, to fix the
-* various bugs of the game and to add the support of the Falcon machine.
+* various bugs of the game and to add the support of the Falcon, CT60 and
+* TT machines.
 *
 * Safari Guns comes on two floppy disks:
 * - The first disk has two independent sides. Both sides have 80 tracks
@@ -1589,7 +1590,7 @@ buff_marg:	dcb.b	$90+DEC_SPACE+$C
 *   on the TOS version).
 *
 * There were also several bugs in the game. Some of them already existed
-* on ST while some others occur only on Falcon.
+* on ST while some others occur only on Falcon or CT60.
 * ST bugs:
 * - the intro freezes if the user presses the space key before the music
 *   starts.
@@ -1599,17 +1600,22 @@ buff_marg:	dcb.b	$90+DEC_SPACE+$C
 *   out-of-bounds array access.
 * - The music sample of the game (during level loading) is noisy when it
 *   starts, for a short time (2/3 seconds). 
-* Falcon bugs are:
+* Falcon/CT60 bugs are:
 * - The intro crashes if run in non ST-low resolution.
 * - The intro crashes: old GFA compiled programs do not run on Falcon
 *   because they require 24-bits addressing mode (while the Falcon uses
 *   32-bits addressing mode).
 * - The intro and the game crash when the sample music starts playing.
 *   The player uses PSG shadow registers which exist on ST but not on
-*   falcon (leading to a bus error on this machine).
+*   Falcon (leading to a bus error on this machine).
 * - The game crashes when the the first level screen appears.
 *   The game code reads the sr register in user mode. Although this
 *   is allowed on 68000, this generates a privilege exception on 68030.
+* - On 68060, the movep instruction is not supported, thus making the
+*   sample music replay routines crash.
+* - On fast machines, the frame rate needs to be lowered to be as close
+*   as possible to the original frame rate, otherwise the game is
+*   unplayable.
 *
 * Note that New Deal released several versions of this game with subtle
 * differences (supported languages, minor graphics or sound details).
@@ -1661,7 +1667,7 @@ setup_trainer_ret
 	; game binaries (intro and main) just after loading.
 	; Game binaries are patched at runtime in order to
 	; remove copy-protections, to enable the trainer mode
-	; and to fix several bugs (native bugs or 68030/falcon
+	; and to fix several bugs (native bugs or Falcon/CT60
 	; issues).
 	; To this end, both the intro and the main binaries have
 	; been patched manually: the first instruction has been
@@ -1672,11 +1678,11 @@ setup_trainer_ret
 	; This routine patches the interrupted program, restores
 	; the original first instruction and resumes execution
 	; of the program.
-	; In order to support Falcon machines, a "privilege
+	; In order to support Falcon/CT60 machines, a "privilege
 	; violation" exception handler ($20) is also installed.
 	; It is used to emulate "move sr,x" instructions which
 	; are allowed in user mode on 68000 but which are
-	; restricted to the supervisor mode on 68030.
+	; restricted to the supervisor mode on 68030 and above.
 	; See trap5_patch_handler() for detailed comments on game
 	; and intro modifications and installation of associated
 	; trap handlers.
@@ -1889,32 +1895,33 @@ trap6_intro_cleanup
 	move.w	#$4e90,$3e(a0)	; "jsr (a0)"
 	movea.l	d0,a0         	; original instruction
 	; Fall-through
-	; On ST, the handler returns here ("rte" below),
-	; while on Falcon, the handler executes the code located
+	; On ST, the handler returns here ("rte" below), while
+	; on Falcon/CT60, the handler executes the code located
 	; after the "rte" (which is patched with a "nop" - see
 	; below).
 
 	; trap6_intro_inst_psgfix()
-	; Fix the intro sample player on Falcon.
+	; Fix the intro sample player on Falcon/CT60.
 	; On ST, the PSG (YM sound chip) has shadow registers
 	; ($ff8804-x) while the Falcon does not.
 	; The intro sample player uses those shadow registers
 	; leading to a bus error on Falcon.
 	; The "trap#6" handler, which is invoked by the init
 	; routine of the sample player (see above), is patched
-	; on Falcon so that the "rte" instruction below is
+	; on Falcon/CT60 so that the "rte" instruction below is
 	; replaced with a nop.
 	; The code located after that rte/nop (called during
 	; sample player init) patches the interrupt routine
 	; of the player on-the-fly:
 	; The 2 "movep" instructions of that routine are replaced
-	; with a "jsr" to the "psgfix_falcon" routine below.
-	; The psgfix_falcon routine uses normal PSG registers
-	; to write music data.
+	; with a "jsr" to the "psgfix_falcon" or "psgfix_68060"
+	; routine below, according to the CPU type.
+	; These routines use normal PSG registers to write
+	; music data.
 trap6_intro_inst_psgfix
-	rte	; replaced with a nop on Falcon
+	rte	; replaced with a nop on Falcon/CT60
 	; Patch the interrupt routine of the intro player.
-	move.l	#0,$30e+4(a0)       ; psgfix_falcon addr
+	move.l	#0,$30e+4(a0)       ; psgfix_xxx addr
 	move.l	#$4e714eb9,$30e(a0) ; "nop ; jsr <addr>"
 	rte
 
@@ -1945,6 +1952,26 @@ psgfix_falcon
 	movep.w	d7,0(a4)
 	movep.w	d5,0(a4)
 	movep.w	d4,0(a4)
+	rts
+
+	; psgfix_68060()
+	; 68060-compatible version of the previous routine.
+	; On 68060 (CT60), the movep instruction is not supported,
+	; therefore implement the sample music replay routine
+	; using move.b instructions instead.
+psgfix_68060
+	rol.l	#8,d5
+	move.b	d5,(a4)
+	rol.l	#8,d5
+	move.b	d5,2(a4)
+	rol.l	#8,d5
+	move.b	d5,(a4)
+	rol.l	#8,d5
+	move.b	d5,2(a4)
+	rol.w	#8,d4
+	move.b	d4,(a4)
+	rol.w	#8,d4
+	move.b	d4,2(a4)
 	rts
 
 	***********************************************************
@@ -2079,40 +2106,49 @@ trap7_level
 	addq.l	#4,2(a7)
 	rte
 
-PATCH_FRAMERATE	=	0
-	ifne PATCH_FRAMERATE
-trap8_vsync
-	movem.l	d0/a0,-(a7)
-	lea	game_vsync_nr(pc),a0
-	move.l	$466.w,d0
-	sub.l	(a0),d0
-	cmp.l	#16,d0
-	bls.s	tr8_ct
-	move.l	#16,d0
-tr8_ct	move.l	$466.w,(a0)
-	lsl.l	#2,d0
-	add.l	#1,4(a0,d0.l)
-	movem.l	(a7)+,d0/a0	
-	move.l	$80+14*4.w,-(a7)
-	rts
-
-_trap8_vsync
-	move.l	a0,-(a7)
-	lea	game_vsync_nr(pc),a0
-trap8_vsync_wait
-	move.l	$466.w,d0
-	sub.l	(a0),d0
-	cmp.l	#4,d0
-	blo.s	trap8_vsync_wait
-	move.l	$466.w,(a0)
-	move.l	(a7)+,a0
+	; trap8_frate()
+	; Lower the frame rate on fast machines.
+	; On a mere 68000 at 8MHz, the average frame rate
+	; is the following:
+	; - 1 VBL per frame during the credits screen
+	;   (horse running over the game title)
+	; - 4 VBLs per frame during presentation screens
+	;   (description of the rules of the game)
+	; - 5 VBLs per frame during the game
+	; The following routine determines the current game
+	; phase and adjust the frame rate accordingly.
+trap8_frate
+	movea.l	2(a7),a0
+	; Credits screen frame rate.
 	moveq.l	#1,d0
-	rte
+	tst.w	$4c5e(a0)
+	beq.s	trap8_frate_cont
+	; Presentation screens frame rate.
+	moveq.l	#4,d0
+	adda.l	#$abf8,a0
+	tst.w	(a0)
+	beq.s	trap8_frate_cont
+	; Game frame rate.
+	moveq.l	#5,d0
+trap8_frate_cont
+	; Determine the number of VBLs elapsed since the latest
+	; invocation to setscreen and ensure it is not lower
+	; than the expected number.
+	lea	trap8_frate_count(pc),a0
+trap8_frate_wait
+	move.l	$466.w,d1
+	sub.l	(a0),d1
+	cmp.l	d0,d1
+	blo.s	trap8_frate_wait
+	move.l	$466.w,(a0)
+	; Invoke the original trap#14 in order to execute
+	; the expected setscreen call and to return to the
+	; game code.
+	movea.l	$80+($e*4).w,a0
+	jmp	(a0)
 
-game_vsync_nr
+trap8_frate_count
 	ds.l	1
-	ds.l	20
-	endc
 
 	***********************************************************
 	* On-the-fly intro/game patching
@@ -2120,7 +2156,7 @@ game_vsync_nr
 	* installs associated trap handlers.
 	* Modifications and trap handlers are used to remove
 	* copy-protections, to enable the trainer mode and to fix
-	* several bugs (native bugs or 68030/falcon issues).
+	* several bugs (native bugs or Falcon/CT60 issues).
 	***********************************************************
 
 	; trap5_patch_handler()
@@ -2201,23 +2237,28 @@ patch_intro
 	lea	trap6_intro_cleanup(pc),a1
 	move.l	a1,$80+(6*4).w
 
-	; Falcon: fix unsupported accesses to PSG shadow
-	; registers ($8804-$88ff).
+	; Falcon/CT60: fix unsupported accesses to PSG shadow
+	; registers ($ff8804-$ff88ff).
 	move.l	mach_conf_p(pc),a1
-	cmp.w	#MCH_FALCON,MACH2CPU+MCH_TYPE(a1)
+	move.w	MACH2CPU+MCH_TYPE(a1),d0
+	cmp.b	#MCH_FALCON,d0
 	bne.s	patch_intro_aes
 
 	; Patch the "trap#6" handler so that it executes
-	; additional code on Falcon. This additional code
-	; patches the interrupt routine of the intro sample
+	; additional code on Falcon/CT60. This additional code
+	; modifies the interrupt routine of the intro sample
 	; player during player initialization.
 	; See trap6_intro_inst_psgfix handler() for details.
 	lea	trap6_intro_inst_psgfix(pc),a1
 	lea	psgfix_falcon(pc),a2
-	; Replace the "rte" with a "nop".
+	and.w	#MCH_CT60,d0
+	beq.s	.noct60
+	lea	psgfix_68060(pc),a2
+.noct60	; Replace the "rte" with a "nop".
 	move.w	#$4e71,(a1)
 	; Patch the "jsr <addr>" instruction with the address
-	; of the psgfix_falcon routine.
+	; of the psgfix_falcon or psgfix_68060 routine according
+	; to the CPU type.
 	move.l	a2,4(a1)
 
 	; Remove AES/VDI calls used during init/cleanup.
@@ -2297,31 +2338,48 @@ patch_game
 	lea	trap4_game_music_fix(pc),a1
 	move.l	a1,$80+(4*4).w
 
-	; Falcon: fix unsupported accesses to PSG shadow
-	; registers ($8804-$88ff).
+	; - Falcon/CT60:
+	;   fix unsupported accesses to PSG shadow
+	;   registers ($ff8804-$ff88ff).
+	; - Falcon/CT60/TT:
+	;   fix game frame rate.
 	move.l	mach_conf_p(pc),a1
-	cmp.w	#MCH_FALCON,MACH2CPU+MCH_TYPE(a1)
-	bne.s	patch_vsync
+	move.w	MACH2CPU+MCH_TYPE(a1),d0
+	cmp.b	#MCH_TT,d0
+	beq.s	patch_frate
+	cmp.b	#MCH_FALCON,d0
+	bne.s	patch_trainer
 
-	; On Falcon, the sample player interrupt routine of the
-	; game is patched as follows: "movep" instructions are
-	; replaced with a "jsr" to psgfix_falcon().
-	; See psgfix_falcon() for details.
+	; On Falcon/CT60, the sample player interrupt routine
+	; of the game is patched as follows: "movep" instructions
+	; are replaced with a "jsr" to psgfix_xxx().
+	; See psgfix_falcon() and psgfix_68060() for details.
 	movea.l	a0,a1
 	adda.l	#$13aaa,a1
 	lea	psgfix_falcon(pc),a2
-	move.l	#$4e714eb9,(a1)	; "nop ; jsr <addr>"
-	move.l	a2,4(a1)	; <addr> = psgfix_falcon
+	and.w	#MCH_CT60,d0
+	beq.s	.noct60
+	lea	psgfix_68060(pc),a2
+.noct60	move.l	#$4e714eb9,(a1)	; "nop ; jsr <addr>"
+	move.l	a2,4(a1)	; <addr> = psgfix_xxx
 
-	; Fix frame rate on fast machines.
-patch_vsync
-	ifne PATCH_FRAMERATE
+	; Lower the frame rate on fast machines, such as
+	; the Falcon, the CT60 and the TT.
+	; The original setscreen invocation (trap#14) is replaced
+	; with an invocation to the trap8_frate function via the
+	; trap#8 instruction.
+	; In the game, setscreen is used to swap screen buffers.
+	; The trap8_frate function adds some delay before actually
+	; invoking setscreen, in order to obtain the same frame
+	; rate as on a mere 68000 CPU running at 8MHz.
+patch_frate
 	movea.l	a0,a1
-	adda.l	#$1176c,a1
-	move.w	#$4e48,(a1)
-	lea	trap8_vsync(pc),a1
+	adda.l	#$11760,a1
+	move.w	#$4e48,(a1)	; "trap#8"
+	lea	trap8_frate(pc),a1
 	move.l	a1,$80+(8*4).w
-	endc
+
+	; Patch the game for trainer mode.
 patch_trainer
 	movea.l	trainer_info_p(pc),a2
 
@@ -2464,6 +2522,7 @@ restore_traps_lp
 	moveq.l	#0,d0
 	rts
 
+	;
 	; mach_restore()
 	; Restore machine state: CPU caches & freq, bus config,
 	; screen, palette...
@@ -2471,6 +2530,7 @@ restore_traps_lp
 	; Out:
 	;   d0: return value
 	; Scratch: a0-a1
+	;
 mach_restore
 	movea.l	mach_conf_p(pc),a1
 
@@ -2484,13 +2544,11 @@ mach_restore
 
 	; Restore screen config.
 	lea	MACH2SCREEN(a1),a0
-	bsr.s	screen_restore
+	bsr	screen_restore
 
-	; Restore mouse & conterm.
-	move.l	a1,-(a7)
-	dc.w	$a009
-	move.l	(a7)+,a1
-	move.b	#7,$484.w
+	; Restore misc. peripherals/system config.
+	lea	MACH2MISC(a1),a0
+	bsr	misc_restore
 
 	; Reset saved machine config status.
 	clr.w	CONF_DONE(a1)
@@ -2498,47 +2556,144 @@ mach_restore_ret
 	moveq.l	#0,d0
 	rts
 
+	;
 	; cpu_restore()
 	; Restore CPU state: caches & freq, bus config.
 	; in:
 	;   a0: cpu_conf
+	;
 cpu_restore
 	movem.l	d0-d2/a0-a2,-(a7)
 	movea.l	a0,a2
 
-	; Restore cacr register.
-	move.l	$10.w,-(a7)
-	movea.l	a7,a0
-	lea	cache_rest_done(pc),a1
-	move.l	a1,$10.w
+	;
+	; Restore cache config saved by cpu_setup().
+	;
 
-	move.l	CACR(a2),d0
+	;
+	; Save SR and mask all interrupts.
+	;
+	move.w	sr,-(a7)
+	or.w	#$700,sr
+
+	;
+	; Save exception vectors that will be modified.
+	;
+	move.l	$10.w,-(a7)	; Illegal
+	move.l	$2c.w,-(a7)	; Line F
+	move.l	$f4.w,-(a7)	; Unimp Int Instr
+
+	;
+	; Install our own handlers to catch exceptions triggered
+	; by unsupported cache maintenance instructions.
+	;
+	lea	cache_except(pc),a1
+	move.l	a1,$10.w
+	move.l	a1,$2c.w
+	move.l	a1,$f4.w
+	nop                	; Flush write pipeline
+
+	movea.l	a7,a0      	; Save SP
+	move.l	CACR(a2),d0	; Original cacr
+
+	;
+	; Invalidate instr/data/branch/ATC caches on 68040/68060.
+	;
+	lea	cache_rest_68x(pc),a1
+	nop	           	; Stall pipeline
+	dc.w	$f4d8      	; cinva bc
+	dc.w	$f518      	; pflusha
+	nop	           	; Stall pipeline
+
+	;
+	; Restore original cacr value on 68020+ CPUs.
+	;
+cache_rest_68x
+	lea	cache_rest_done(pc),a1
 	dc.w	$4e7b,$0002	; movec d0,cacr
+	nop	           	; Stall pipeline
+
+	;
+	; Restore exception vectors and SR.
+	;
 cache_rest_done
-	movea.l	a0,a7
+	move.l	(a7)+,$f4.w
+	move.l	(a7)+,$2c.w
 	move.l	(a7)+,$10.w
+	move.w	(a7)+,sr
 
 	move.w	MCH_TYPE(a2),d0
 
+	;
 	; Restore MegaSTe cache/freq.
+	;
 	cmp.b	#MCH_MEGASTE,d0
 	bne.s	bus_rest_falcon
 	move.b	CACHE_MEGASTE(a2),$ffff8e21.w
 	bra.s	cpu_rest_ret
 
+	;
 	; Restore Falcon bus control.
+	;
 bus_rest_falcon
-	cmp.b	#MCH_FALCON,d0
+	; Use word comparison to skip this on CT60.
+	cmp.w	#MCH_FALCON,d0
 	bne.s	cpu_rest_ret
 	move.b	BUS_FALCON(a2),$ffff8007.w
 cpu_rest_ret
 	movem.l	(a7)+,d0-d2/a0-a2
 	rts
 
+	;
+	; Catch exceptions triggered by unsupported
+	; cache maintenance instructions.
+	; Restore SP and resume execution at the address
+	; specified in a1.
+	;
+cache_except
+	move.l	a0,a7
+	jmp	(a1)
+
+	;
+	; misc_restore()
+	; Restore misc. peripherals/system config,
+	; including conterm, internal speaker.
+	; in:
+	;   a0: misc_conf
+	;
+misc_restore
+	movem.l	d0-d2/a0-a2,-(a7)
+
+	; Save & disable interrupts.
+	move.w	sr,-(a7)
+	or.w	#$700,sr
+
+	; Restore conterm.
+	move.b	CONTERM(a0),$484.w
+
+	; Restore internal speaker state.
+	lea	$ffff8800.w,a1
+	move.b	#14,(a1)      	; select Port A register
+	move.b	(a1),d0      	; get current value
+	bclr	#6,d0         	; internal speaker off
+	or.b	SPEAKER(a0),d0	; original speaker bit
+	move.b	d0,2(a1)      	; write new value
+
+	; Restore interrupts.
+	move.w	(a7)+,sr
+
+	; Show mouse.
+	dc.w	$a009
+
+	movem.l	(a7)+,d0-d2/a0-a2
+	rts
+
+	;
 	; screen_restore()
 	; Restore screen state: resolution, palette.
 	; in:
 	;   a0: screen_conf
+	;
 screen_restore
 	movem.l	d0-d7/a0-a4,-(a7)
 	movea.l	a0,a4
@@ -2553,8 +2708,6 @@ screen_restore
 	movem.l	PALETTE(a4),d0-d7
 	movem.l	d0-d7,$ffff8240.w
 
-	bsr	vsync
-
 	; Restore screen config.
 	move.l	REZ_V(a4),-(a7)
 	move.l	PHYSBASE(a4),-(a7)
@@ -2562,6 +2715,10 @@ screen_restore
 	move.w	#5,-(a7)
 	trap	#14
 	lea	14(a7),a7
+
+	; Wait for the update of the screen configuration
+	; to take effect.
+	bsr	vsync
 
 	; Clear the screen.
 	lea	cls(pc),a0
@@ -2661,10 +2818,22 @@ PHYSBASE   	=	(sc_physbase-screen_conf)
 LOGBASE    	=	(sc_logbase-screen_conf)
 PALETTE    	=	(sc_palette-screen_conf)
 
+	; Saved misc. config.
+misc_conf
+mc_conterm      ; Console output config (conterm).
+	ds.w	1
+mc_speaker      ; Internal speaker on/off.
+	ds.w	1
+misc_conf_end
+
+CONTERM    	=	(mc_conterm-misc_conf)
+SPEAKER    	=	(mc_speaker-misc_conf)
+
 mach_conf_end
 
 MACH2CPU   	=	(cpu_conf-mach_conf)
 MACH2SCREEN	=	(screen_conf-mach_conf)
+MACH2MISC  	=	(misc_conf-mach_conf)
 CPU2SCREEN 	=	(screen_conf-cpu_conf)
 
 	; Pointer to actual loader operating mode.
@@ -2953,6 +3122,7 @@ trap11_sf_size
 	sub.l	a7,d0
 	rte
 
+	;
 	; mach_setup()
 	; Save the machine configuration and setup a
 	; ST-compatible CPU & screen configuration.
@@ -2960,18 +3130,13 @@ trap11_sf_size
 	; Out:
 	;   d0: return value
 	; Scratch: a0-a1
+	;
 mach_setup
 	movea.l	mach_conf_p(pc),a1
 
-	; Setup machine configuration once.
+	; Ensure machine configuration is setup once.
 	tst.w	CONF_DONE(a1)
 	bne.s	mach_setup_ret
-
-	; Hide mouse and clear conterm.
-	move.l	a1,-(a7)
-	dc.w	$a00a
-	move.l	(a7)+,a1
-	clr.b	$484.w
 
 	; Determine the machine type (ST/STe/MegaSTe/TT/Falcon).
 	bsr.s	get_mch_type
@@ -2981,7 +3146,11 @@ mach_setup
 	move.w	d0,MCH_TYPE(a0)
 
 	; Save and setup CPU state: caches & freq, bus config.
-	bsr.s	cpu_setup
+	bsr	cpu_setup
+
+	; Save and setup misc. peripherals/system config.
+	lea	MACH2MISC(a1),a0
+	bsr	misc_setup
 
 	; Save and setup screen config: resolution, palette.
 	lea	MACH2SCREEN(a1),a0
@@ -2993,15 +3162,29 @@ mach_setup_ret
 	moveq.l	#0,d0
 	rts
 
+	;
 	; get_mch_type()
-	; Walk through the cookie jar table to determine
-	; the current machine type: ST/STe/MegaSTe/TT/Falcon.
+	; Walk through the cookie jar table to determine the
+	; current machine type: ST/STe/MegaSTe/TT/Falcon/CT60.
 	; out:
 	;   d0: machine type
+	;
 get_mch_type
 	movem.l	d1/a0,-(a7)
 
 	moveq.l	#0,d0
+
+	; Get a pointer to the OSHEADER (SYSHDR) structure.
+	movea.l	$4f2.w,a0
+
+	; Get TOS version number.
+	move.w	2(a0),d1
+	; Old TOSes don't provide the cookie jar,
+	; assume machine is ST in that case.
+	cmp.w	#$106,d1
+	blo.s	mch_default
+
+	; Get a pointer to the cookie jar table.
 	move.l	$5a0.w,d1
 	beq.s	mch_default
 	movea.l	d1,a0
@@ -3040,27 +3223,124 @@ mch_tst_falcon
 mch_default
 	move.b	#MCH_ST,d0	; Default/ST
 mch_end
+	; Force the CT60 flag is the CPU is a 68060,
+	; this is needed on emulators.
+	bsr.s	fix_mch_ct60
+
 	movem.l	(a7)+,d1/a0
 	rts
 
+	;
+	; fix_mch_ct60()
+	; Force the CT60 flag if the CPU is a 68060.
+	; The 68060 does not implement the movep instruction,
+	; this feature is used for the CPU detection.
+	; in:
+	;   d0: machine type
+	; out:
+	;   d0: updated machine type
+	;
+fix_mch_ct60
+	movem.l	d1/a0-a1,-(a7)
+
+	; Mask interrupts.
+	move.w	sr,-(a7)
+	or.w	#$700,sr
+
+	; On 68060, movep generates an Unimplemented Integer
+	; Instruction exception ($f4).
+	move.l	$f4.w,-(a7)
+	lea	cache_except(pc),a1
+	move.l	a1,$f4.w
+
+	movea.l	a7,a0
+	lea	mch_68060(pc),a1
+	clr.l	-(a7)
+
+	move.w	#MCH_CT60,d1
+	; d1.w = 0 if CPU <= 68040, d1.w = MCH_CT60 otherwise.
+	movep.w	0(a7),d1
+mch_68060
+	movea.l	a0,a7
+
+	move.l	(a7)+,$f4.w
+	move.w	(a7)+,sr
+
+	; Update the machine type.
+	or.w	d1,d0
+
+	movem.l	(a7)+,d1/a0-a1
+	rts
+
+	;
 	; cpu_setup()
 	; Save CPU state: caches & freq, bus config.
 	; Setup a ST-compatible CPU configuration.
 	; in:
 	;   a0: cpu_conf
+	;
 cpu_setup
 	movem.l	d0-d2/a0-a2,-(a7)
 	move.l	a0,a2
 
-	; Disable caches using the cacr register.
-	move.l	$10.w,-(a7)
-	movea.l	a7,a0
-	lea	cache_dis_done(pc),a1
+	;
+	; Get current cache config and disable all caches.
+	; Handle the 3 following m68k families:
+	; - 68000/68010: no cache
+	; - 68020/68030: basic cache mngt through cacr
+	; - 68040/68060: richer cache mngt through cacr
+	;                and cpush/cinv instructions
+	;
+
+	;
+	; Save SR and mask all interrupts.
+	;
+	move.w	sr,-(a7)
+	or.w	#$700,sr
+
+	;
+	; Save exception vectors that will be modified.
+	;
+	move.l	$10.w,-(a7)	; Illegal
+	move.l	$2c.w,-(a7)	; Line F
+	move.l	$f4.w,-(a7)	; Unimp Int Instr
+
+	;
+	; Install our own handlers to catch exceptions triggered
+	; by unsupported cache maintenance instructions.
+	;
+	lea	cache_except(pc),a1
 	move.l	a1,$10.w
+	move.l	a1,$2c.w
+	move.l	a1,$f4.w
 	nop                	; Flush write pipeline
 
-	moveq.l	#0,d0
+	movea.l	a7,a0      	; Save SP
+
+	;
+	; Get current cache config.
+	;
+	lea	cache_dis_done(pc),a1
+	moveq.l	#0,d0      	; cacr value if error
 	dc.w	$4e7a,$0002	; movec cacr,d0
+
+	;
+	; Disable caches on 68040/68060.
+	;
+cache_dis_6040
+	lea	cache_dis_6030(pc),a1
+	nop	           	; Stall pipeline
+	dc.w	$f4f8      	; cpusha bc
+	moveq.l	#0,d1      	; Disable I/D caches
+	dc.w	$4e7b,$1002	; movec d1,cacr
+	nop	           	; Stall pipeline
+	bra.s	cache_dis_done
+
+	;
+	; Disable caches on 68020/68030.
+	;
+cache_dis_6030
+	lea	cache_dis_done(pc),a1
 	move.w	d0,d1
 	and.w	#$0101,d1
 	asl.w	#3,d1
@@ -3068,51 +3348,97 @@ cpu_setup
 	dc.w	$4e7b,$0002	; movec d0,cacr
 	moveq.l	#0,d1      	; Disable I/D caches
 	dc.w	$4e7b,$1002	; movec d1,cacr
+	nop	           	; Stall pipeline
 
+	;
+	; Restore exception vectors and SR.
+	;
 cache_dis_done
-	movea.l	a0,a7
+	move.l	(a7)+,$f4.w
+	move.l	(a7)+,$2c.w
 	move.l	(a7)+,$10.w
+	move.w	(a7)+,sr
 
+	;
 	; Save original cacr register.
+	;
 	move.l	d0,CACR(a2)
 
 	move.w	MCH_TYPE(a2),d0
 
+	;
 	; Save MegaSTe freq/cache config,
 	; setup 8Mhz uncached MegaSTe CPU.
+	;
 	cmp.b	#MCH_MEGASTE,d0
 	bne.s	bus_compat_falcon
 	move.b	$ffff8e21.w,CACHE_MEGASTE(a2)
 	clr.b	$ffff8e21.w	; 8Mhz uncached CPU
-	bra.s	cache_dis_ct60
+	bra.s	cpu_setup_ret
 
+	;
 	; Save Falcon bus control,
-	; setup 8Mhz Falcon CPU and STe bus emulation.
+	; setup 16Mhz Falcon CPU and STe bus emulation.
+	;
 bus_compat_falcon
-	cmp.b	#MCH_FALCON,d0
-	bne.s	cache_dis_ct60
-	move.b	$ffff8007.w,BUS_FALCON(a2)
-	clr.b	$ffff8007.w	; 8Mhz CPU + STe bus emul
+	; Use word comparison on purpose, so that the Falcon
+	; bus control is not configured on a CT60.
+	cmp.w	#MCH_FALCON,d0
+	bne.s	cpu_setup_ret
+	move.b	$ffff8007.w,d0
+	move.b	d0,BUS_FALCON(a2)
+	bclr	#5,d0      	; STe bus emulation
+	bset	#0,d0      	; 16Mhz CPU
+	move.b	d0,$ffff8007.w
 
-	; Disable caches on CT60.
-cache_dis_ct60
-	and.w	#MCH_CT60,d0
-	beq.s	cpu_setup_ret
-
-	clr.w	-(a7)      	; Switch off all caches
-	move.w	#5,-(a7)
-	move.w	#160,-(a7)
-	trap	#14
-	addq.l	#6,a7
 cpu_setup_ret
 	movem.l	(a7)+,d0-d2/a0-a2
 	rts
 
+	;
+	; misc_setup()
+	; Save and setup misc. peripherals/system config,
+	; including conterm, internal speaker.
+	; in:
+	;   a0: misc_conf
+	;
+misc_setup
+	movem.l	d0-d2/a0-a2,-(a7)
+
+	; Save & disable interrupts.
+	move.w	sr,-(a7)
+	or.w	#$700,sr
+
+	; Save and clear conterm.
+	move.b	$484.w,CONTERM(a0)
+	clr.b	$484.w
+
+	; Switch the internal speaker off.
+	lea	$ffff8800.w,a1
+	move.b	#14,(a1)      	; select Port A register
+	move.b	(a1),d0      	; get current value
+	move.b	d0,d1
+	and.b	#$40,d1       	; keep int. speaker bit
+	move.b	d1,SPEAKER(a0)	; and save it
+	bclr	#6,d0         	; internal speaker off
+	move.b	d0,2(a1)      	; write new value
+
+	; Restore interrupts.
+	move.w	(a7)+,sr
+
+	; Hide mouse.
+	dc.w	$a00a
+
+	movem.l	(a7)+,d0-d2/a0-a2
+	rts
+
+	;
 	; screen_setup()
 	; Save screen state: resolution, palette.
 	; Setup a ST-compatible low screen resolution.
 	; in:
 	;   a0: screen_conf
+	;
 screen_setup
 	movem.l	d0-d7/a0-a4,-(a7)
 	movea.l	a0,a4
@@ -3134,19 +3460,25 @@ screen_setup
 	addq.l	#2,a7
 	move.l	d0,LOGBASE(a4)
 
+	; ST Shifter or Falcon VIDEL video chip?
 	move.w	MCH_TYPE-CPU2SCREEN(a4),d0
 	cmp.b	#MCH_FALCON,d0
 	bne.s	scr_set_st
 
+	;
 	; Falcon ST-compatible low rez setup.
+	;
 
 	; Get current video mode.
 	move.w	#-1,-(a7)
 	move.w	#88,-(a7)
 	trap	#14
 	addq.l	#4,a7
-	move.w	d0,VIDEOMODE(a4)
+
+	; Save current screen resolution in the VSetscreen
+	; format (rez=3 + modecode).
 	move.w	#3,REZ(a4)
+	move.w	d0,VIDEOMODE(a4)
 
 	; Determine current screen size and check if it is
 	; compatible with ST low rez (size must be >= $7d00).
@@ -3159,9 +3491,9 @@ screen_setup
 	st	REZ_INVALID(a4)
 	bra.s	scr_set_cont
 
-	; Compute ST-compatible low rez param (VSetscreen).
+	; Compute ST-compatible low rez param in the
+	; VSetscreen format (rez=3 + ST-compat low rez modecode).
 scr_set_falcon
-	; VSetscreen modecode.
 	moveq.l	#3,d0
 	swap	d0
 	move.w	VIDEOMODE(a4),d0
@@ -3173,30 +3505,45 @@ scr_set_falcon
 	bra.s	scr_set_common
 
 scr_set_st
-	; Save current screen resolution.
+	;
+	; Legacy ST low rez setup.
+	;
+
+	; Get current screen resolution.
 	move.w	#4,-(a7)
 	trap	#14
 	addq.l	#2,a7
+
+	; Save current screen resolution in the VSetscreen
+	; format (ST rez + dummy modecode).
 	move.w	d0,REZ(a4)
 	clr.w	VIDEOMODE(a4)
 
-	; Compute ST/STe/MegaSTe/TT low rez param (VSetscreen).
+	; Compute ST/STe/MegaSTe/TT low rez param in the
+	; VSetscreen format (ST low rez + dummy modecode).
 	moveq.l	#0,d0
 	move.l	d0,LOWREZ_V(a4)
 
 scr_set_common
-	; Common ST/Falcon setscreen trap invocation.
+	;
+	; Common ST/Falcon VSetscreen trap invocation.
+	;
+	; d0 contains the ST low rez param in the VSetscreen
+	; format, that is the resolution in the high 16 bits
+	; and the modecode in the low 16 bits.
+	;
 	move.l	d0,-(a7)
 	move.l	PHYSBASE(a4),-(a7)
 	move.l	LOGBASE(a4),-(a7)
 	move.w	#5,-(a7)
 	trap	#14
 	lea	14(a7),a7
-scr_set_cont
-	; On Falcon, the ST palette is active at next sync
-	; signal only.
+
+	; Wait for the update of the screen configuration
+	; to take effect.
 	bsr	vsync
 
+scr_set_cont
 	; Save ST palette.
 	movem.l	$ffff8240.w,d0-d7
 	movem.l	d0-d7,PALETTE(a4)
@@ -3205,8 +3552,7 @@ scr_set_cont
 	tst	REZ_INVALID(a4)
 	bne.s	scr_set_ret
 
-	; Set all 16 colors to the current color
-	; of the background.
+	; Set all 16 colors to the current background color.
 	lea	$ffff8240.w,a0
 	move.w	(a0)+,d0
 	moveq.l	#14,d1
