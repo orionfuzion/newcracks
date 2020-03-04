@@ -5,48 +5,29 @@ Cracked, mega-trained, partly-filed, packed, linked, ramdisk, bug-fixed.
 
 December 25, 2018 - Orion of The Replicants.
 
-This directory contains the source files of the crack,
-with plenty of explanations and comments:
+In this folder,
+- *[release](release)* contains the floppy disk image of the crack.
+- *[src](src)* provides the source files of the crack,
+with plenty of explanations and comments.
 
-- *SAFARI.S*  
-The main driver in charge of executing the Xmas cracktro and the loader of the game.
-- *LOADER.S*  
-The unpacking/single-file loader of the game providing the trainer mode and on-the-fly depacking of game files.
-- *intro.lnk*  
-Library file containing all binary files of the game intro, packed and linked together.
-- *intro.dir*  
-Directory providing the list of all binary files linked in *intro.lnk*.
-This file is included and used by the loader code.
-- *game.lnk*  
-Library file containing all binary files of the game, packed and linked together.
-- *game.dir*  
-Directory providing the list of all binary files linked in *game.lnk*.
-This file is included and used by the loader code.
-- *NEWSCOR.DAT*  
-Data file of the game providing high scores.
-- *README.TXT*  
-Read-Me file provided on the floppy disk of the crack and describing the release.
-- *README.md*  
-This file.
-
-Here are technical details about this game including the copy-protection,
+Here are technical details about *Safari Guns* including the copy-protection,
 the description of various bugs in the game that needed to be fixed,
 and the work needed to support the Falcon machine.
 
-Please look at *LOADER.S* for the implementation of all the stuffs described hereafter.
+Please look at *[src/LOADER.S](src/LOADER.S)* for the implementation of all the stuffs described hereafter.
 
-Safari Guns comes on two floppy disks:
-* The first disk has two independent sides. Both sides have 80 tracks
+*Safari Guns* comes on two floppy disks:
+- The first disk has two independent sides. Both sides have 80 tracks
   (0-79), but the first side has 10 sectors per track, while the second
   side has only 9 sectors per track.  
   The first side of the first disk contains 32 data files and
   2 executable programs (in the auto folder):
-  * the intro, a GFA compiled program.
-  * the game, a C compiled program.  
+  - the intro, a GFA compiled program.
+  - the game, a C compiled program.  
   
   The second side of the first disk contains the intro music sample
   stored on sectors directly without a filesystem.  
-* The second disk has only one side containing 80 tracks with 10 sectors
+- The second disk has only one side containing 80 tracks with 10 sectors
   per track.  
   This disk contains 100 data files.
 
@@ -121,13 +102,13 @@ one version to another.
 The developer left an easter egg in the code of the game intro.
 It is a hidden message for crackers:
 
-`*** SAFARI GUNS (C) NEW DEAL Productions S.A. 1989 ***`  
-`*** Atari ST version by Ric EXCOFFIER. ***`  
-`*** If you crack this stuff, please call us for a job ***`  
-`*** Phone: 48 70 86 94 (PARIS,FRANCE) ***`  
-`*** We're also looking for an AY' Freaker, for our next games... Contact us !!`  
-`*** See ya ! ***`
+    *** SAFARI GUNS (C) NEW DEAL Productions S.A. 1989 ***
+    *** Atari ST version by Ric EXCOFFIER. ***
+    *** If you crack this stuff, please call us for a job ***
+    *** Phone: 48 70 86 94 (PARIS,FRANCE) ***
+    *** We're also looking for an AY' Freaker, for our next games... Contact us !!
+    *** See ya ! ***
 
 The developer also left a signature in the main binary of the game:
 
-`All Code by Richard Excoffier. Juillet 1989.`  
+    All Code by Richard Excoffier. Juillet 1989.
