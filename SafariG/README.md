@@ -1,20 +1,21 @@
 # Safari Guns with game intro & multi-languages support
 
-Cracked, mega-trained, partly-filed, packed, linked, ramdisk, bug-fixed.  
-512KB, hard-drive and Falcon support.
-
-December 25, 2018 - Orion of The Replicants.
+Cracked, mega-trained, partly-filed, packed, linked, ramdisk,  
+bug-fixed, 512KB, hard-drive and Falcon/TT/CT60 support.
 
 In this folder,
 - *[release](release)* contains the floppy disk image of the crack.
 - *[src](src)* provides the source files of the crack,
 with plenty of explanations and comments.
 
-Here are technical details about *Safari Guns* including the copy-protection,
-the description of various bugs in the game that needed to be fixed,
-and the work needed to support the Falcon machine.
+Here are the technical details about
+*[Safari Guns](http://www.atarimania.com/game-atari-st-safari-guns_24849.html)*,
+including the copy-protection, the description of various bugs in the
+game that needed to be fixed, and the work needed to support the Falcon
+machine.
 
-Please look at *[src/LOADER.S](src/LOADER.S)* for the implementation of all the stuffs described hereafter.
+Please look at *[src/LOADER.S](src/LOADER.S)* for the implementation of all
+the stuffs described hereafter.
 
 *Safari Guns* comes on two floppy disks:
 - The first disk has two independent sides. Both sides have 80 tracks
@@ -69,8 +70,8 @@ game, there were two other difficulties to make an advanced crack
   is launched from the auto folder, is between 40KB and 50KB depending
   on the TOS version).
 
-There were also several bugs in the game, that had to be fixed. Some of them already existed
-on ST while some others occur only on Falcon.
+There were also several bugs in the game, that had to be fixed.
+Some of them already existed on ST while some others occur only on Falcon.
 
 ST bugs:
 - the intro freezes if the user presses the space key before the music
@@ -112,3 +113,7 @@ It is a hidden message for crackers:
 The developer also left a signature in the main binary of the game:
 
     All Code by Richard Excoffier. Juillet 1989.
+
+---
+
+*Orion of The Replicants - December 25, 2018*

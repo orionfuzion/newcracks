@@ -1,0 +1,414 @@
+Hatari v2.1.0, compiled on:  Feb 14 2018, 19:49:26
+IPF : IPF_Init
+IPF : capsimage library version release=5 revision=1
+STX : STX_Insert_internal drive=0 file=./AudioSculpture1-5.STX buf=0x108dc3000 size=899610
+Inserted disk './AudioSculpture1-5.STX' to drive A:.
+CPU cycleunit: 256 (0.500)
+CPU cycleunit: 256 (0.500)
+1870 CPU functions
+cpu table lvl=0 , mode=4
+Building CPU, 44274 opcodes (0 -2 1)
+CPU=68000, FPU=0, MMU=0, JIT=0. prefetch and cycle-exact 24-bit
+Reading debugger commands from './as15_bp0.ini'...
+Changed to input file dir '.'.
+> history cpu 10000
+Re-allocating & zeroing history due to type/limit change.
+History tracking enabled for CPU (max. 10000 instructions).
+> b all
+CPU breakpoints: 0
+> trace none
+> b pc = $140 :trace :once :file as15_bp1.ini
+CPU condition breakpoint 1 with 1 condition(s) added:
+	pc = $140
+-> Once, delete after breaking.
+-> Trace instead of breaking, but show still hits.
+-> Execute debugger commands from 'as15_bp1.ini' file on hit.
+Changed back to 'AS15.CRK' dir.
+CPU cycleunit: 256 (0.500)
+CPU cycleunit: 256 (0.500)
+CPU reset PC=e00034 (ROM memory)..
+Bus error wput at 0041fffe
+Bus Error at address $41fffe, PC=$e00178 addr_e3=e0017c op_e3=3302
+Illegal instruction: 42c0 at 00E00340 -> 00E00364
+Illegal instruction: cdce at 00070026 -> 0007002E
+1. CPU breakpoint condition(s) matched 1 times.
+	pc = $140 :once :trace :file as15_bp1.ini
+Reading debugger commands from 'as15_bp1.ini'...
+> d $140-$146
+$00000140 : 41f9 0006 0000                     lea       $60000,a0
+> m $60000-$60080
+00060000: 6a 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12   j...............
+00060010: 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12   ................
+00060020: 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12   ................
+00060030: 12 12 12 12 12 12 12 12 12 12 12 12 18 78 c2 7f   .............x..
+00060040: 92 07 91 90 90 ff ff ff ff ff ff ff ff ff ff ff   ................
+00060050: ff c2 a1 a1 fe 01 00 01 02 bc db 4e 4e 4e 4e 4e   ...........NNNNN
+00060060: 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e   NNNNNNNNNNNNNNNN
+00060070: 4e 00 00 00 00 00 00 00 00 00 00 00 00 01 14 a1   N...............
+> w $60000 $7f $92 $07 $91 $90 $90
+> b pc = $60d76 :trace :once :file as15_bp2_1.ini
+CPU condition breakpoint 2 with 1 condition(s) added:
+	pc = $60d76
+-> Once, delete after breaking.
+-> Trace instead of breaking, but show still hits.
+-> Execute debugger commands from 'as15_bp2_1.ini' file on hit.
+Removed CPU breakpoint 1:
+	pc = $140 :once :trace :file as15_bp1.ini
+CPU reset PC=600b8 (ST memory)..
+Illegal instruction: 4afc at 00060152 -> 000004AE
+Illegal instruction: 4afc at 00060186 -> 000004AE
+Address Error at address $70fff, PC=$60198 addr_e3=60198 op_e3=4279
+M68000 Bus Error reading at address $0 PC=$60198.
+Bus Error at address $0, PC=$60198 addr_e3=6019c op_e3=21f8
+Illegal instruction: 4afc at 00060200 -> 000004AE
+Illegal instruction: 4afc at 00060200 -> 000004AE
+Illegal instruction: 4afc at 00060200 -> 000004AE
+Illegal instruction: 4afc at 00060200 -> 000004AE
+Illegal instruction: 4700 at 0006028A -> 000004AE
+Illegal instruction: 19f3 at 00060290 -> 000004AE
+Illegal instruction: 167a at 00060296 -> 000004AE
+Illegal instruction: 08bc at 0006029C -> 000004AE
+Illegal instruction: 7922 at 000602A2 -> 000004AE
+Illegal instruction: 29de at 000602A8 -> 000004AE
+Illegal instruction: 4f4f at 000602AE -> 000004AE
+Illegal instruction: 7fff at 000602B4 -> 000004AE
+Illegal instruction: 000a at 000602BA -> 000004AE
+1. CPU breakpoint condition(s) matched 1 times.
+	pc = $60d76 :once :trace :file as15_bp2_1.ini
+Reading debugger commands from 'as15_bp2_1.ini'...
+> d $60d72-$60d98
+$00060d72 : 2078 044e                          movea.l   $044e.w,a0
+$00060d76 : 1018                               move.b    (a0)+,d0
+$00060d78 : b03c 00a1                          cmp.b     #$a1,d0
+$00060d7c : 671e                               beq.s     $60d9c
+$00060d7e : 0c00 00f7                          cmpi.b    #$f7,d0
+$00060d82 : 66f2                               bne.s     $60d76
+$00060d84 : 4a10                               tst.b     (a0)
+$00060d86 : 66ee                               bne.s     $60d76
+$00060d88 : 5248                               addq.w    #1,a0
+$00060d8a : 1c18                               move.b    (a0)+,d6
+$00060d8c : e14e                               lsl.w     #8,d6
+$00060d8e : 1c18                               move.b    (a0)+,d6
+$00060d90 : 4846                               swap      d6
+$00060d92 : 1c18                               move.b    (a0)+,d6
+$00060d94 : e14e                               lsl.w     #8,d6
+$00060d96 : 1c18                               move.b    (a0)+,d6
+> m $78000-$78080
+00078000: 09 c9 c9 c9 c9 c9 c9 c9 c9 c9 c9 c9 c9 c9 c9 c9   ................
+00078010: c9 c9 c9 c9 c9 c9 c9 c9 c9 c9 c5 14 0b cd b4 f7   ................
+00078020: 00 de ad fa ce 00 00 00 00 00 00 00 00 14 a1 a1   ................
+00078030: fe 02 00 01 03 37 26 4e 4e 4e 4e 4e 4e 4e 4e 4e   .....7&NNNNNNNNN
+00078040: 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 00 00 00   NNNNNNNNNNNNN...
+00078050: 00 00 00 00 00 00 00 00 00 01 14 a1 a1 fb 02 f1   ................
+00078060: 14 00 07 00 48 1c 09 c8 10 67 c0 40 0c 3e 46 0e   ....H....g.@.>F.
+00078070: 20 64 00 98 3f 80 00 00 30 41 04 00 84 1c 02 0e    d..?...0A......
+> w $78000 $f7 $00 $de $ad $fa $ce
+> b pc = $60da2 :trace :once :file as15_bp2_2.ini
+CPU condition breakpoint 2 with 1 condition(s) added:
+	pc = $60da2
+-> Once, delete after breaking.
+-> Trace instead of breaking, but show still hits.
+-> Execute debugger commands from 'as15_bp2_2.ini' file on hit.
+Removed CPU breakpoint 1:
+	pc = $60d76 :once :trace :file as15_bp2_1.ini
+1. CPU breakpoint condition(s) matched 1 times.
+	pc = $60da2 :once :trace :file as15_bp2_2.ini
+Reading debugger commands from 'as15_bp2_2.ini'...
+> loadbin ipl_part3.bin $78000
+  Read 0x1600 bytes.
+> b pc = $7851c :trace :once :file as15_bp3_1.ini
+CPU condition breakpoint 2 with 1 condition(s) added:
+	pc = $7851c
+-> Once, delete after breaking.
+-> Trace instead of breaking, but show still hits.
+-> Execute debugger commands from 'as15_bp3_1.ini' file on hit.
+Removed CPU breakpoint 1:
+	pc = $60da2 :once :trace :file as15_bp2_2.ini
+CPU reset PC=780e0 (ST memory)..
+1. CPU breakpoint condition(s) matched 1 times.
+	pc = $7851c :once :trace :file as15_bp3_1.ini
+Reading debugger commands from 'as15_bp3_1.ini'...
+> d $7851c-$78536
+$0007851c : 41fa 1262                          lea       $79780(pc),a0
+$00078520 : 0c18 00cd                          cmpi.b    #$cd,(a0)+
+$00078524 : 66fa                               bne.s     $78520
+$00078526 : 1e18                               move.b    (a0)+,d7
+$00078528 : e14f                               lsl.w     #8,d7
+$0007852a : 1e10                               move.b    (a0),d7
+$0007852c : 5a48                               addq.w    #5,a0
+$0007852e : 7aff                               moveq     #$ff,d5
+$00078530 : 1a18                               move.b    (a0)+,d5
+$00078532 : e14d                               lsl.w     #8,d5
+$00078534 : 1a10                               move.b    (a0),d5
+> m $79780-$79870
+00079780: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20                   
+00079790: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20                   
+000797A0: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20                   
+000797B0: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20                   
+000797C0: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20                   
+000797D0: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20                   
+000797E0: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20                   
+000797F0: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20                   
+00079800: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20                   
+00079810: 20 20 20 20 20 20 20 20 20 20 20 20 00 38 01 21               .8.!
+00079820: c2 0b cd b4 f7 de ad c0 de de af 4e 4e 4e 4e 4e   ...........NNNNN
+00079830: 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e   NNNNNNNNNNNNNNNN
+00079840: 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e   NNNNNNNNNNNNNNNN
+00079850: 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e   NNNNNNNNNNNNNNNN
+00079860: 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e   NNNNNNNNNNNNNNNN
+> w $79780 $cd $b4 $f7 $de $ad $c0 $de $de $af
+> b pc = $78bb0 :trace :once :file as15_bp3_2.ini
+CPU condition breakpoint 2 with 1 condition(s) added:
+	pc = $78bb0
+-> Once, delete after breaking.
+-> Trace instead of breaking, but show still hits.
+-> Execute debugger commands from 'as15_bp3_2.ini' file on hit.
+Removed CPU breakpoint 1:
+	pc = $7851c :once :trace :file as15_bp3_1.ini
+M68000 Bus Error writing at address $6 PC=$78842.
+Bus Error at address $6, PC=$78842 addr_e3=78848 op_e3=48e0
+Address Error at address $1, PC=$204 addr_e3=204 op_e3=4278
+M68000 Bus Error reading at address $204 PC=$204.
+Bus Error at address $204, PC=$204 addr_e3=206 op_e3=4e73
+Address Error at address $207, PC=$7887e addr_e3=78880 op_e3=4e73
+M68000 Bus Error reading at address $ffff8604 PC=$78d4a.
+Bus Error at address $ffff8604, PC=$78d4a addr_e3=78d4e op_e3=4238
+1. CPU breakpoint condition(s) matched 1 times.
+	pc = $78bb0 :once :trace :file as15_bp3_2.ini
+Reading debugger commands from 'as15_bp3_2.ini'...
+> d $78bb0-$78bd8
+$00078bb0 : 7e7f                               moveq     #$7f,d7
+$00078bb2 : 0c29 00c2 0002                     cmpi.b    #$c2,2(a1)
+$00078bb8 : 660a                               bne.s     $78bc4
+$00078bba : 5249                               addq.w    #1,a1
+$00078bbc : 51cf fff4                          dbra      d7,$78bb2
+$00078bc0 : 6000 feac                          bra       $78a6e
+$00078bc4 : 0c11 00c2                          cmpi.b    #$c2,(a1)
+$00078bc8 : 66f0                               bne.s     $78bba
+$00078bca : 0c29 00c2 0001                     cmpi.b    #$c2,1(a1)
+$00078bd0 : 66e8                               bne.s     $78bba
+$00078bd2 : 7000                               moveq     #0,d0
+$00078bd4 : 602e                               bra.s     $78c04
+$00078bd6 : 4e71                               nop       
+> m $78ed6-$78f56
+00078ED6: 17 54 95 04 ca a1 a1 a1 49 6e 69 74 69 61 6c 20   .T......Initial 
+00078EE6: 50 72 6f 67 72 61 6d 20 6c 6f 61 64 20 5b 76 32   Program load [v2
+00078EF6: 2e 30 5d 20 20 54 6d 20 31 39 38 39 2c 31 39 39   .0]  Tm 1989,199
+00078F06: 30 20 54 68 75 6e 64 65 72 53 6f 66 74 20 44 65   0 ThunderSoft De
+00078F16: 76 65 6c 6f 70 6d 65 6e 74 c2 c2 c2 fe 50 00 01   velopment....P..
+00078F26: 02 63 6c f5 a1 a1 fe 50 00 0b 03 40 be f7 a1 41   .cl....P...@...A
+00078F36: 74 61 72 69 2d 53 54 20 49 50 4c 20 54 72 61 63   tari-ST IPL Trac
+00078F46: 6b 20 20 00 00 14 a1 a1 fb e5 e5 e5 e5 e5 e5 e5   k  .............
+> w $78f1f $c2 $c2 $c2
+> b pc = $78c82 :trace :once :file as15_bp3_3.ini
+CPU condition breakpoint 2 with 1 condition(s) added:
+	pc = $78c82
+-> Once, delete after breaking.
+-> Trace instead of breaking, but show still hits.
+-> Execute debugger commands from 'as15_bp3_3.ini' file on hit.
+Removed CPU breakpoint 1:
+	pc = $78bb0 :once :trace :file as15_bp3_2.ini
+1. CPU breakpoint condition(s) matched 1 times.
+	pc = $78c82 :once :trace :file as15_bp3_3.ini
+Reading debugger commands from 'as15_bp3_3.ini'...
+> d $78c68-$78c88
+$00078c68 : 3e3c 01fe                          move.w    #$1fe,d7
+$00078c6c : 7000                               moveq     #0,d0
+$00078c6e : d090                               add.l     (a0),d0
+$00078c70 : 5448                               addq.w    #2,a0
+$00078c72 : 4640                               not.w     d0
+$00078c74 : 4840                               swap      d0
+$00078c76 : e0b0                               roxr.l    d0,d0
+$00078c78 : 0140                               bchg      d0,d0
+$00078c7a : e170                               roxl.w    d0,d0
+$00078c7c : 4440                               neg.w     d0
+$00078c7e : 51cf ffee                          dbra      d7,$78c6e
+$00078c82 : 43f8 0060                          lea       $0060.w,a1
+$00078c86 : 2280                               move.l    d0,(a1)
+> d $78dfc-$78e0e
+$00078dfc : 41fa 00b0                          lea       $78eae(pc),a0
+$00078e00 : 7409                               moveq     #9,d2
+$00078e02 : b098                               cmp.l     (a0)+,d0
+$00078e04 : 57ca fffc                          dbeq      d2,$78e02
+$00078e08 : 204a                               movea.l   a2,a0
+$00078e0a : 6000 fdca                          bra       $78bd6
+> d $78bd6-$78bdc
+$00078bd6 : 4e71                               nop       
+$00078bd8 : 4ff8 8606                          lea       $ffff8606.w,sp
+> w $78bd6 $4f $f8 $86 $06 $66 $48
+> m $7a9d6-$7add6
+0007A9D6: 53 4f 46 54 20 50 52 4f 54 45 43 54 49 4f 4e 20   SOFT PROTECTION 
+0007A9E6: 43 4f 44 45 44 42 59 3a 20 4d 72 20 54 52 55 4f   CODEDBY: Mr TRUO
+0007A9F6: 4e 47 20 4e 47 4f 43 20 50 61 73 63 61 6c 20 54   NG NGOC Pascal T
+0007AA06: 45 4c 3a 20 34 33 20 33 36 20 35 35 20 39 31 20   EL: 43 36 55 91 
+0007AA16: 20 20 20 20 20 44 49 53 4b 20 50 52 4f 54 45 43        DISK PROTEC
+0007AA26: 54 49 4f 4e 20 43 4f 44 45 44 20 42 59 20 4d 72   TION CODED BY Mr
+0007AA36: 20 42 41 55 54 49 53 54 41 20 46 72 65 64 65 72    BAUTISTA Freder
+0007AA46: 69 63 20 54 45 4c 3a 20 39 32 20 36 36 20 36 33   ic TEL: 92 66 63
+0007AA56: 20 31 36 20 69 66 20 79 6f 75 20 61 72 65 20 69    16 if you are i
+0007AA66: 6e 74 65 72 65 73 74 20 62 79 20 6f 75 72 20 70   nterest by our p
+0007AA76: 72 6f 74 65 63 74 20 73 6f 2e 2e 2e 00 28 29 c2   rotect so....().
+0007AA86: 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28   ().().().().().(
+0007AA96: 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29   ).().().().().()
+0007AAA6: c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2   .().().().().().
+0007AAB6: 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28   ().().().().().(
+0007AAC6: 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29   ).().().().().()
+0007AAD6: c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2   .().().().().().
+0007AAE6: 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28   ().().().().().(
+0007AAF6: 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29   ).().().().().()
+0007AB06: c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2   .().().().().().
+0007AB16: 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28   ().().().().().(
+0007AB26: 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29   ).().().().().()
+0007AB36: c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2   .().().().().().
+0007AB46: 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28   ().().().().().(
+0007AB56: 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29   ).().().().().()
+0007AB66: c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2   .().().().().().
+0007AB76: 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28   ().().().().().(
+0007AB86: 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29   ).().().().().()
+0007AB96: c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2   .().().().().().
+0007ABA6: 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28   ().().().().().(
+0007ABB6: 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29 c2 28 29   ).().().().().()
+0007ABC6: c2 28 29 c2 28 a1 c2 28 29 14 28 c2 28 28 29 c2   .().(..().(.(().
+0007ABD6: 4c da f7 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e   L..NNNNNNNNNNNNN
+0007ABE6: 4e 4e 4e 4e 4e 4e a1 a1 a1 fe 50 00 04 03 6e 1f   NNNNNN....P...n.
+0007ABF6: 4e 4e 4e 4e a1 a1 a1 fe 50 00 15 03 ec c5 f7 a1   NNNN....P.......
+0007AC06: a1 a1 a1 fe ef 38 a1 03 1e 2c 00 00 00 00 00 00   .....8...,......
+0007AC16: 00 00 00 00 2e a9 2a 09 94 34 34 29 2d cd 2e 8d   ......*..44)-...
+0007AC26: 2c 2d 84 0a 0e 4d ec ee 4c 2d a4 0d 8d ec 2c 84   ,-...M..L-....,.
+0007AC36: 0b 6e c6 45 c6 0b a4 04 0a 8d a4 06 27 27 07 25   .n.E........''.%
+0007AC46: 86 27 27 26 04 0a 8d 0e ad cc 8c ae 4a 6d ec ce   .''&........Jm..
+0007AC56: 84 08 8c ae cc ad 8d ee 0d ac ad ce 98 58 58 5f   .............XX_
+0007AC66: ca 00 00 20 4c 6d 9e b4 34 3f ca 00 01 60 68 17   ... Lm..4?...`h.
+0007AC76: de f4 28 2e 8c 2e 4d 25 aa 6a 84 09 2a 09 84 0a   ..(...M%.j..*...
+0007AC86: 8e 4c 2c 6d 64 04 00 00 14 34 34 3f 7c bc bc bc   .L,md....44?|...
+0007AC96: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007ACA6: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007ACB6: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007ACC6: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007ACD6: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007ACE6: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007ACF6: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007AD06: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007AD16: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007AD26: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007AD36: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007AD46: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007AD56: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007AD66: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007AD76: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007AD86: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007AD96: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007ADA6: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007ADB6: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+0007ADC6: bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc bc   ................
+> r d0=$2CD041CD
+> b pc = $78bfc :trace :once :file as15_bp3_4.ini
+CPU condition breakpoint 2 with 1 condition(s) added:
+	pc = $78bfc
+-> Once, delete after breaking.
+-> Trace instead of breaking, but show still hits.
+-> Execute debugger commands from 'as15_bp3_4.ini' file on hit.
+Removed CPU breakpoint 1:
+	pc = $78c82 :once :trace :file as15_bp3_3.ini
+1. CPU breakpoint condition(s) matched 1 times.
+	pc = $78bfc :once :trace :file as15_bp3_4.ini
+Reading debugger commands from 'as15_bp3_4.ini'...
+> d $78bdc-$78c04
+$00078bdc : 7400                               moveq     #0,d2
+$00078bde : 3e3c 05e5                          move.w    #$5e5,d7
+$00078be2 : 1218                               move.b    (a0)+,d1
+$00078be4 : e159                               rol.w     #8,d1
+$00078be6 : d218                               add.b     (a0)+,d1
+$00078be8 : 0341                               bchg      d1,d1
+$00078bea : 4841                               swap      d1
+$00078bec : 9218                               sub.b     (a0)+,d1
+$00078bee : d281                               add.l     d1,d1
+$00078bf0 : e159                               rol.w     #8,d1
+$00078bf2 : d218                               add.b     (a0)+,d1
+$00078bf4 : d481                               add.l     d1,d2
+$00078bf6 : e37a                               rol.w     d1,d2
+$00078bf8 : 51cf ffe8                          dbra      d7,$78be2
+$00078bfc : 21c2 0064                          move.l    d2,$0064.w
+$00078c00 : 6000 fea4                          bra       $78aa6
+> r d2=$4235E822
+> b pc = $3eb60 :trace :once :file as15_bp4.ini
+CPU condition breakpoint 2 with 1 condition(s) added:
+	pc = $3eb60
+-> Once, delete after breaking.
+-> Trace instead of breaking, but show still hits.
+-> Execute debugger commands from 'as15_bp4.ini' file on hit.
+Removed CPU breakpoint 1:
+	pc = $78bfc :once :trace :file as15_bp3_4.ini
+CPU reset PC=7fd22 (ST memory)..
+M68000 Bus Error writing at address $1 PC=$db1c.
+Bus Error at address $1, PC=$db1c addr_e3=db20 op_e3=50f8
+Illegal instruction: 4e7a at 00029C90 -> 00029CAE
+Illegal instruction: 4e7a at 0000DB84 -> 0000DB8E
+M68000 Bus Error reading at address $ffff8781 PC=$dbfc.
+Bus Error at address $ffff8781, PC=$dbfc addr_e3=dc00 op_e3=1038
+M68000 Bus Error reading at address $ffff8e21 PC=$3ead2.
+Bus Error at address $ffff8e21, PC=$3ead2 addr_e3=3ead6 op_e3=51f8
+1. CPU breakpoint condition(s) matched 1 times.
+	pc = $3eb60 :once :trace :file as15_bp4.ini
+Reading debugger commands from 'as15_bp4.ini'...
+> d $3eb60-$3eb98
+$0003eb60 : 45e9 0200                          lea       $200(a1),a2
+$0003eb64 : 0c19 007f                          cmpi.b    #$7f,(a1)+
+$0003eb68 : 670c                               beq.s     $3eb76
+$0003eb6a : b5c9                               cmpa.l    a1,a2
+$0003eb6c : 62f6                               bhi.s     $3eb64
+$0003eb6e : 51ca ff6a                          dbra      d2,$3eada
+$0003eb72 : 70ff                               moveq     #$ff,d0
+$0003eb74 : 4e75                               rts       
+$0003eb76 : 0c11 0092                          cmpi.b    #$92,(a1)
+$0003eb7a : 66e8                               bne.s     $3eb64
+$0003eb7c : 2689                               move.l    a1,(a3)
+$0003eb7e : 1019                               move.b    (a1)+,d0
+$0003eb80 : e148                               lsl.w     #8,d0
+$0003eb82 : 1019                               move.b    (a1)+,d0
+$0003eb84 : 4840                               swap      d0
+$0003eb86 : 1019                               move.b    (a1)+,d0
+$0003eb88 : e148                               lsl.w     #8,d0
+$0003eb8a : 1019                               move.b    (a1)+,d0
+$0003eb8c : 0a80 9207 9190                     eori.l    #$92079190,d0
+$0003eb92 : 66d0                               bne.s     $3eb64
+$0003eb94 : 7000                               moveq     #0,d0
+$0003eb96 : 4e75                               rts       
+> m $3ebe4-$3ede4
+0003EBE4: 6a 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12   j...............
+0003EBF4: 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12   ................
+0003EC04: 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12   ................
+0003EC14: 12 12 12 12 12 12 12 12 12 12 12 12 18 78 c2 7f   .............x..
+0003EC24: 92 07 91 90 90 ff ff ff ff ff ff ff ff ff ff ff   ................
+0003EC34: ff c2 a1 a1 fe 01 00 01 02 bc db 4e 4e 4e 4e 4e   ...........NNNNN
+0003EC44: 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e 4e   NNNNNNNNNNNNNNNN
+0003EC54: 4e 00 00 00 00 00 00 00 00 00 00 00 00 01 14 a1   N...............
+0003EC64: a1 fb 48 f9 1f 85 97 00 90 08 43 bc 00 05 4b ee   ..H.......C...K.
+0003EC74: 3f f2 50 47 44 fc 4f 43 42 46 db fc f0 07 3a 0a   ?.PGD.OCBF....:.
+0003EC84: 2d 75 10 25 7a 0c d7 87 cd ce fe 77 00 07 00 2e   -u.%z......w....
+0003EC94: 20 41 43 ee 7c 04 d0 fc 00 03 4f f5 18 5e 00 86    AC.|.....O..^..
+0003ECA4: 04 65 01 ff b1 03 40 80 2b 7c b1 17 10 df 00 14   .e....@.+|......
+0003ECB4: 03 0f c0 03 00 00 00 48 02 08 03 08 00 01 e0 4c   .......H.......L
+0003ECC4: 48 00 03 c1 e0 08 80 3f 38 24 00 00 0f 0e 00 3e   H......?8$.....>
+0003ECD4: 00 0f 80 3e 02 20 20 3e 00 4c 81 3e 01 26 01 ff   ...>.  >.L.>.&..
+0003ECE4: 38 26 01 ff 38 26 01 ff 32 26 00 00 81 00 10 ff   8&..8&..2&......
+0003ECF4: 30 26 00 22 00 02 08 ff 30 26 00 3e 03 0e 00 3f   0&."....0&.>...?
+0003ED04: 30 26 00 3e 00 08 00 7f 26 23 01 3e 03 c2 00 0f   0&.>....&#.>....
+0003ED14: ce 00 20 03 c0 1f 80 40 93 c2 1c 38 f8 07 e0 7f   .. ....@...8....
+0003ED24: c1 08 78 00 0c 01 80 78 78 18 04 61 81 00 02 47   ..x....xx..a...G
+0003ED34: c0 80 00 c7 e0 7f e0 41 11 18 30 00 01 08 00 03   .......A..0.....
+0003ED44: e1 20 0c 03 e1 e3 c1 20 10 00 03 18 78 60 03 e7   . ..... ....x`..
+0003ED54: e1 c0 78 40 03 cf e1 88 20 3f e3 80 80 00 00 c0   ..x@.... ?......
+0003ED64: 0c 18 f8 03 e1 f8 f8 e7 e1 e0 fc e3 e0 08 c0 c3   ................
+0003ED74: e0 00 f0 e3 e3 c0 ff f3 e0 07 e0 00 40 00 03 e0   ............@...
+0003ED84: 00 20 c0 00 ff 87 e0 33 e0 20 40 e0 03 00 00 00   . .....3. @.....
+0003ED94: c0 00 fe 07 e0 1c 00 00 c0 3f e0 00 00 83 e0 60   .........?.....`
+0003EDA4: 00 19 11 00 fe 43 e0 60 00 40 c0 00 00 20 00 20   .....C.`.@... . 
+0003EDB4: 00 30 02 60 00 03 e0 00 00 09 10 60 09 03 e0 00   .0.`.......`....
+0003EDC4: 08 10 00 c0 00 00 00 00 10 0e 64 e0 00 80 c0 98   ..........d.....
+0003EDD4: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+> r pc=$3eb94
+Removed CPU breakpoint 1:
+	pc = $3eb60 :once :trace :file as15_bp4.ini
+M68000 Bus Error reading at address $ffff8e21 PC=$29f80.
+Bus Error at address $ffff8e21, PC=$29f80 addr_e3=29f84 op_e3=50f8
