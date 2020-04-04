@@ -25,9 +25,9 @@ and some members of *[SYNC](https://demozoo.org/groups/2256)*.
 It is composed of two distinct and complementary parts:
 
 1. The **Initial Program Load** (**IPL**) is executed at boot time.  
-   It is a huge piece of code encrypted and protected against reverse
-   engineering.  
-   Its purpose if to verify that the disk in use is an original copy.
+   It is a huge piece of encrypted code protected against reverse
+   engineering and hacking.  
+   Its purpose is to verify that the disk in use is an original copy.
    To this end, it reads special tracks on the disk and crashes in case
    of a copy. It also writes some magic values in low memory that are
    checked later during the game. Eventually, it loads and executes the
@@ -73,7 +73,7 @@ a single mega-protection whose complete execution takes **15 seconds**!
 All of the hardware mechanisms required by a native debugger (management
 of CPU exceptions, use of keyboard or screen...) are highjacked or
 neutralized by the IPL code, making it almost impossible to use such
-a debugger to reverse engineer the IPL.  
+a debugger to hack the IPL.  
 
 For instance, the code of the three parts of the IPL is encrypted and
 decrypted on-the-fly using different techniques, such as trace vector
@@ -178,9 +178,8 @@ format prevented its content from being copied.
    unusual, used in a strange way or encrypted (and decrypted on-the-fly)
    and a hacker who sees them will think that it is only garbage.  
    So if the hacker loads the wrong sector, he will see some protection
-   code (which is just a red herring), but if he loads the correct
-   sector, he will see garbage (which is actually the real protection
-   code).  
+   code (which is just a dead end), but if he loads the correct sector,
+   he will see garbage (which is actually the real protection code).  
    That's **evil**!
 
    In the same vein, in the middle of that protection, the code jumps
@@ -486,7 +485,7 @@ inside the code of the game. In this case, the checksum routine
 is executed just after saving the current color palette and it
 uses the contents of the registers left by the previous code.
 
-    lea         $ffff8240.w,a0   ; Color patette registers 0-15
+    lea         $ffff8240.w,a0   ; Color palette registers 0-15
     lea         <buffer>(pc),a1  ; Destination buffer
     moveq       #7,d0
     .1:
@@ -497,7 +496,7 @@ uses the contents of the registers left by the previous code.
     move.b      $424b(a0),d0     ; $4aa ($0a = 4MB)
     sub.b       -$425e(a0),d0    ; $ffff8001 ($0a = 4MB)
     beq.s       <addr>           ; [OK, return]
-    ; [Not OK, corrupt the number of ennemies]
+    ; [Not OK, corrupt the number of enemies]
 
 In the end, Terminator Kid's crack contains 4 checksum routines that
 are still active and that make the game crash at different stages.

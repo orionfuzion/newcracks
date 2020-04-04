@@ -1,10 +1,10 @@
 # Safari Guns with game intro & multi-languages support
 
-Cracked, mega-trained, partly-filed, packed, linked, ramdisk,  
+Cracked, mega-trained, partly-filed, packed, linked, ramdisk,
 bug-fixed, 512KB, hard-drive and Falcon/TT/CT60 support.
 
 In this folder,
-- *[release](release)* contains the floppy disk image of the crack.
+- *[release](release)* contains the floppy image of the crack.
 - *[src](src)* provides the source files of the crack,
 with plenty of explanations and comments.
 

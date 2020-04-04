@@ -10,7 +10,7 @@ Documented cracks are located in the following directories:
 - *SafariG*  
   *[Safari Guns](http://www.atarimania.com/game-atari-st-safari-guns_24849.html)*
   with game intro & multi-languages support.  
-  Cracked, mega-trained, partly-filed, packed, linked, ramdisk,  
+  Cracked, mega-trained, partly-filed, packed, linked, ramdisk,
   bug-fixed, 512KB, hard-drive and Falcon/TT/CT60 support.
 
 - *AudioS15*  
@@ -20,7 +20,7 @@ Documented cracks are located in the following directories:
 - *SonShuSi*  
   *[Son Shu Si](http://www.atarimania.com/game-atari-st-son-shu-si_24613.html)*,
   first 100% version.  
-  Cracked, mega-trained, filed, repacked, linked, ramdisk,  
+  Cracked, mega-trained, filed, repacked, linked, ramdisk,
   bug-fixed, hard-drive and Falcon/TT/CT60 support.
 
 More cracks to come!

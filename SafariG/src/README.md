@@ -1,4 +1,4 @@
-This directory contains the source files of the crack of *Safari Guns*,
+This directory contains the source files of the crack of ***Safari Guns***,
 with plenty of explanations and comments:
 
 - *SAFARI.S*  
