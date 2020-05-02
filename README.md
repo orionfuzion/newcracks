@@ -18,7 +18,7 @@ Documented cracks are located in the following directories:
   How to crack the copy-protection under Hatari.
 
 - *SonShuSi*  
-  *[Son Shu Si](http://www.atarimania.com/game-atari-st-son-shu-si_24613.html)*,
+  *[Son Shu Shi](http://www.atarimania.com/game-atari-st-son-shu-si_24613.html)*,
   first 100% version.  
   Cracked, mega-trained, filed, repacked, linked, ramdisk,
   bug-fixed, hard-drive and Falcon/TT/CT60 support.

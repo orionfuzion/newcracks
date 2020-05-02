@@ -1,26 +1,26 @@
-# Son Shu Si - The Copy-Protection
+# Son Shu Shi - The Copy-Protection
 
 The copy-protection used in
-*[Son Shu Si](http://www.atarimania.com/game-atari-st-son-shu-si_24613.html)*
+*[Son Shu Shi](http://www.atarimania.com/game-atari-st-son-shu-si_24613.html)*
 is very special!
 
 It is actually used on all titles published by
 *[Expose Software](http://www.atarimania.com/pgelstsoft.awp?system=S&publisher=2865)*.  
-Expose Software was a French software-house run by members of the
+*Expose Software* was a French software-house run by members of the
 Atari ST demo-scene, mainly coming from the
 *[NeXT](https://demozoo.org/groups/31770/)*
 demo-group (who released the
 *[Phaleon Giga Demo](https://demozoo.org/productions/73226)*).
 
 Titles that use this copy-protection are: all releases of **Audio
-Sculpture**, **No Buddies Land** and **Son Shu Si**.
+Sculpture**, **No Buddies Land** and **Son Shu Shi**.
 
 This terrifying copy-protection was developed by talented Atari ST
 sceners including:
 **Illegal** (*[The Replicants](https://demozoo.org/groups/31491)*),
 **Altair** (*[VMAX](https://demozoo.org/groups/31500)*),
 **Zarathustra** (*[The Invisibles](https://demozoo.org/groups/39198)*)
-and some members of *[SYNC](https://demozoo.org/groups/2256)*.  
+and **Redhead** (*[SYNC](https://demozoo.org/groups/2256)*).
 
 It is composed of two distinct and complementary parts:
 
@@ -43,7 +43,7 @@ It is composed of two distinct and complementary parts:
    are corrupted to malfunction or even crash.  
    This ensures that the IPL has not been removed by a hacker.
 
-   Son Shu Si uses an additional protection mechanism: the contents of
+   *Son Shu Shi* uses an additional protection mechanism: the contents of
    the two floppy disks are fully encrypted.  
    Decryption is performed on-the-fly when disk tracks are loaded; the
    game does not use the standard
@@ -60,7 +60,7 @@ the game almost impossible using a native Atari ST debugger.
 > that is, how tracks and sectors are physically protected and verified by the IPL.  
 > The description of that physical part is based on the analysis performed by
 > *[DrCoolZik](https://info-coach.fr/atari/index.php)* for **Audio Sculpture**.
-> It is valid for **Son Shu Si** as both software use the same protection scheme.  
+> It is valid for **Son Shu Shi** as both software use the same protection scheme.  
 > If you are interested in the physical part of this copy-protection, it is detailed in
 > *[Audio Sculpture 1.5 - Cracking the copy-protection under Hatari](../AudioS15/README.md)*.  
 > The technical terms used in this README for the physical part are explained in a
@@ -76,8 +76,8 @@ neutralized by the IPL code, making it almost impossible to use such
 a debugger to hack the IPL.  
 
 For instance, the code of the three parts of the IPL is encrypted and
-decrypted on-the-fly using different techniques, such as trace vector
-decoding (*[TVD](https://en.wikipedia.org/wiki/Trace_vector_decoder)*):
+decrypted on-the-fly using different techniques, such as *trace vector
+decoding* (*[TVD](https://en.wikipedia.org/wiki/Trace_vector_decoder)*):
 the trace mode of the CPU is used to decode each 
 instruction just-in-time before it is executed and to re-encrypt it
 after the execution.  
@@ -85,7 +85,7 @@ after the execution.
 All possible CPU exceptions are also triggered on purpose during the
 execution of the IPL to take new execution paths.  
 But CPU exceptions may also occur if the protection does not execute
-properly. This can happen because the protection code uses many tricks
+correctly. This can happen because the protection code uses many tricks
 to detect the presence of a debugger and, in this case, insidiously take
 an alternate execution path that will later result in code corruption
 and thus in an exception.  
@@ -96,7 +96,7 @@ Additional techniques are used to prevent the use of a debugger and thus
 to make the reverse-engineering of the protection very painful:
 - execution of code installed in low memory in place of the
   *[exception vectors](http://deunstg.free.fr/sct1/hardware.htm)*,
-- use of the stack pointer to points to I/O registers (thus making the
+- use of the stack pointer to points to *I/O* registers (thus making the
   debugger unable to handle its own exceptions),
 - use of the *VBL*, *HBL* and *timer-A* to execute concurrent (but
   synchronized) protection code,
@@ -130,9 +130,9 @@ format prevented its content from being copied.
    but since *[Ocean](https://en.wikipedia.org/wiki/Ocean_Software)*
    never used it, it was eventually integrated in the IPL.
 
-   Illegal's part executes in low memory in place of the exception vectors.
+   *Illegal*'s part executes in low memory in place of the exception vectors.
    The code is entirely encrypted and is decoded on-the-fly using
-   different techniques, and in particular the trace vector decoding:
+   different techniques, and in particular the *trace vector decoding*:
    - The trace exception handler is installed at address *$8*, at the
      beginning of the exception vectors.
    - The stack pointer is set to different low memory addresses not
@@ -141,7 +141,7 @@ format prevented its content from being copied.
      the trace handler to compute the decryption key for the next
      instruction to be decrypted.  
      The stack pointer is also used as the base register to access the
-     DMA controller (*$ff860x*), thus ensuring that it cannot be changed
+     *DMA* controller (*$ff860x*), thus ensuring that it cannot be changed
      to point to a memory area suitable for the debugger.
 
    The protection starts with a funny trick in the boot sector:
@@ -156,7 +156,7 @@ format prevented its content from being copied.
    executing.  
 
    However, when a debugger is used, the boot sector needs to be loaded
-   *manually* into memory before it can be debugged. And because this
+   **manually** into memory before it can be debugged. And because this
    step is manual, the time between loading the boot sector and starting
    the debugging process is long enough for the drive motor to shut down.
    In such a case, the *PSG register 14* indicates that the drive *A* is
@@ -170,7 +170,7 @@ format prevented its content from being copied.
    This fake protection sector contains the string ***TOKI-LOADER*** at
    the beginning and the code changes the background color to blue in a
    similar way to what the real protection code does, then it executes
-   a trace vector decoder that will load another (wrong) sector.
+   a *trace vector decoder* that will load another (wrong) sector.
    In the end, this fake protection will crash.  
 
    And the funny thing is that the sector containing the real protection
@@ -187,24 +187,24 @@ format prevented its content from being copied.
    the hacker into thinking the execution failed.
 
    The protection checks that the disk is an original copy as follows:
-   a first protected track stored on disk#1 contains invalid data in gap
-   (IDG) and hidden data in gap (HDG) at the start of the track.  
+   a first protected track stored on disk#1 contains *invalid data in gap*
+   (**IDG**) and *hidden data in gap* (**HDG**) at the start of the track.  
    The protection verifies that these data are present, and crashes
    otherwise.
 
    After checking the protected track, the second part of the IPL is
    loaded and executed.
 
-   During the execution of Illegal's part, the background color changes
+   During the execution of *Illegal*'s part, the background color changes
    from bright blue to dark blue, and is set to black at the beginning
    of the second part.
 
 ### 2nd part of the IPL - Developed by Zarathustra
 
-   The second part of the IPL was developed by Zarathustra although
-   it also includes a piece of code developed by Altair.
+   The second part of the IPL was developed by *Zarathustra* although
+   it also includes a piece of code developed by *Altair*.
 
-   This part is mainly a trace vector decoder, with a huge quantity of
+   This part is mainly a *trace vector decoder*, with a huge quantity of
    code being decoded on-the-fly. Every CPU exception (bus error,
    address error, illegal, divide by zero, CHK, TRAPV and every Trap)
    is triggered during trace vector decoding to disrupt the
@@ -216,7 +216,7 @@ format prevented its content from being copied.
    disables *MFPs* and resets the CPU (by executing the *RESET* instruction).
 
    This part also contains a **sync decoding** mechanism (developed by
-   Altair): the base level code computes a decryption key while the
+   *Altair*): the base level code computes a decryption key while the
    *timer-A* running in the background modifies that key on-the-fly.
    The decryption key is computed correctly only if the base level
    and *timer-A* code are scheduled in the correct order, which is not
@@ -227,46 +227,46 @@ format prevented its content from being copied.
    debugger is used or not.
 
    The protection checks that the disk is an original copy as follows:
-   a second protected track stored on disk#1 contains invalid data in
-   gap (IDG) and hidden data in gap (HDG) at the start and at the end
+   a second protected track stored on disk#1 contains *invalid data in
+   gap* (**IDG**) and *hidden data in gap* (**HDG**) at the start and at the end
    of the track.  
    The protection verifies that the said data are present at the **start**
    of the track, and crashes otherwise.  
-   The hidden data in gap at the **end** of the track are checked in the
-   third part of the IPL.
+   The *hidden data in gap* at the **end** of the track are checked later,
+   in the third part of the IPL.
 
    The protected track has a special format: it has 5 sectors of 1024
    bytes and 1 sector of 512 bytes (like the
    *[Union Demo](https://demozoo.org/productions/68152/)* format),
    and it contains the third part of the IPL.
 
-   In the case of Son Shu Si (Terminator Kid's version), this special
+   In the case of *Son Shu Shi* (*Terminator Kid*'s version), this special
    format led to an incorrect copy of the track and therefore to the
    loss of the third part of the IPL.  
    Fortunately, a very close version of this part can be found in the
-   original copy on Audio Sculpture 1.5, on track #2.
+   original copy on *Audio Sculpture 1.5*, on track #2.
 
    After checking the protected track, the third part of the IPL is
    loaded and executed.
 
-### 3rd part of the IPL - Developed by Zarathustra/Illegal/SYNC
+### 3rd part of the IPL - Developed by Zarathustra/Illegal/Redhead
 
-   The third part of the IPL was developed by Zarathustra, with the
-   help of Illegal and some members of SYNC.
+   The third part of the IPL was developed by *Zarathustra*, with the
+   help of *Illegal* and *Redhead*.
 
    This part uses techniques similar to those used in the first 2 parts:
-   trace vector decoding, use of CPU exceptions, stack pointer pointing
-   to I/O registers, *IKBD* reset, CPU reset, switching to high resolution,
+   *trace vector decoding*, use of CPU exceptions, stack pointer pointing
+   to *I/O* registers, *IKBD* reset, CPU reset, switching to high resolution,
    anti-debugging sync tricks.
 
-   Like Illegal's part, this protection begins with several instructions
+   Like *Illegal*'s part, this protection begins with several instructions
    used in a strange way to make hackers believe in incorrect *ASM* code
    that would have been badly loaded or decrypted.
 
    Unusual instructions with poorly understood behavior are also used
    to confuse hackers. For instance, a *STOP* instruction that clears
    the *[Supervisor](https://www.atarimagazines.com/startv1n3/SupervisorMode.html)*
-   flag is used to trigger a privilege violation exception. This behavior
+   flag is used to trigger a *privilege violation exception*. This behavior
    was *[not properly emulated in Hatari](http://www.atari-forum.com/viewtopic.php?f=14&t=31939&start=50#p330399)*
    until the end of 2017!
 
@@ -276,7 +276,7 @@ format prevented its content from being copied.
    - Use of the *[prefetch queue](http://pasti.fxatari.com/68kdocs/68kPrefetch.html)*
      effect on *[self-modifying code](https://en.wikipedia.org/wiki/Self-modifying_code)*:
      the next instruction is modified but that modification is not taken
-     into account due to the 68000 prefetch queue. Therefore the original
+     into account due to the *68000 prefetch queue*. Therefore the original
      (unmodified) instruction is actually executed. But when stepping
      through the code under a debugger, the prefetch queue behaves
      differently causing the modified instruction to be executed.
@@ -297,8 +297,8 @@ format prevented its content from being copied.
      If they are missing or incorrect, the game is altered. This ensures
      that the IPL has been executed and has not been removed by a hacker.
 
-     SYNC members have certainly contributed to the implementation of
-     the checksums and we can find *traces* of this collaboration in
+     *SYNC* members have certainly contributed to the implementation of
+     the checksums and we can find traces of this collaboration in
      the code of a checksum routine: the hexadecimal value **SYNC** is
      used to decode a magic value!
 
@@ -307,14 +307,14 @@ format prevented its content from being copied.
    two protected tracks as follows:
 
    - The protected track which is checked in the second part is checked
-     again here, but this time the code verifies the hidden data in gap
+     again here, but this time the code verifies the *hidden data in gap*
      at the **end** of the track.  
      If the data are missing, the protection crashes.
 
    - A third protected track on disk#1 is checked. It uses several Hardware
-     protection mechanisms: hidden data in gap (HDG), sector data with
-     no ID (SNI), invalid data in gap (IDG), invalid track number (ITN),
-     ID within ID (IWI).  
+     protection mechanisms: *hidden data in gap* (**HDG**), *sector data with
+     no ID* (**SNI**), *invalid data in gap* (**IDG**), *invalid track number*
+     (**ITN**), *ID within ID* (**IWI**).  
      The protection code computes a checksum on *$1798* bytes of the track
      starting from a *$c2* sync mark (thus covering most of the track).
      This checksum is used to decrypt a small routine executed later.
@@ -322,9 +322,9 @@ format prevented its content from being copied.
      protection will crash.
 
      This track also uses a very special protection scheme, probably
-     never used on Atari ST: **write splice inside sector** (SIS).
+     never used on Atari ST: **write splice inside sector** (**SIS**).
 
-     Altair (the author) describes the protection as follow:
+     *Altair* (the author) describes the protection as follow:
 
      > *The principle is very simple, it's based on the disk drives rotation
      > speed variation on a whole round, it's in fact an extreme pain in
@@ -381,7 +381,7 @@ The following messages are in plain text (unencrypted) on the disk:
         You cannot escape your destiny. You must face Dark Vador again...
         INSERT ORIGINAL DISK IN A
 
-The following messages are decrypted during Illegal's part:
+The following messages are decrypted during *Illegal*'s part:
 
 1.
         Please do NOT crack
@@ -401,9 +401,9 @@ The following messages are decrypted during Illegal's part:
         spreading it on the boards, it's hard to do, and easy to undo...
 
 4.
-        ILLEGAL GIVES A KISS TO LULU BECOS OF MY HARD DRIVE FUCK YA!"
+        ILLEGAL GIVES A KISS TO LULU BECOS OF MY HARD DRIVE FUCK YA!
 
-The following messages are decrypted during Zarathustra's part:
+The following messages are decrypted during *Zarathustra*'s part:
 
 1.
         may the force be with you
@@ -416,7 +416,7 @@ The following messages are decrypted during Zarathustra's part:
 
 The second part of the protection is composed of several checksum routines
 hidden in the main program of the game (**11** routines in the case of
-Son Shu Si).  
+*Son Shu Shi*).  
 These routines are executed during the game and check the magic values
 written in low memory by the IPL.  
 If magic values are missing or incorrect, the game code or its data are
@@ -445,19 +445,19 @@ So, if the cracking method is simply to:
 then the checksum routines will only succeed on this machine
 (or identical) and fail on others.
 
-And that's what happens with Terminator Kid's crack!  
-Terminator Kid cracked the checksum routines as follows: he ran
+And that's what happens with *Terminator Kid*'s crack!  
+*Terminator Kid* cracked the checksum routines as follows: he ran
 the first part of the protection (the IPL) on his machine, then
 he dumped the contents of the low memory containing the magic values,
 and he just created a small boot program that copies this dump into
 low memory before starting the game.  
-As a result, Terminator Kid's version only works correctly on a
-machine similar to the one used to crack the game:  
+As a result, *Terminator Kid*'s version only works correctly on a
+machine similar to the one he used to crack the game:  
 **an Atari STe, with 4MB of RAM, using TOS 1.62**.  
 When run on a different machine, the game will eventually crash.
 
-To be exact, Terminator Kid managed to disable 7 checksum routines
-out of the 11 present in Son Shu Si. Indeed, his boot program also
+To be exact, *Terminator Kid* managed to disable **7** checksum routines
+out of the **11** present in *Son Shu Shi*. Indeed, his boot program also
 includes a routine that dynamically generates certain magic values
 correctly using machine-specific information.  
 But since he did not find all the magic values and the corresponding
@@ -469,11 +469,11 @@ find: they are mixed up with the code of the game, their code is
 obfuscated and it is almost impossible to guess what it does by
 simply reading it.
 
-Below is a checksum routine taken from Son Shu Si.  
+Below is a checksum routine taken from *Son Shu Shi*.  
 It is called every time special enemies or objects appear on the
 screen during the game.  
 It checks a magic byte stored at *$4aa*, that is computed using
-the memory banks configuration (*$ff8001*).  
+the *memory banks* configuration (*$ff8001*).  
 If the check fails (if the magic byte does not correspond to a
 machine with 4MB of RAM), the game data are corrupted: the number
 of enemies currently on the screen is reset to a random number,
@@ -498,10 +498,10 @@ uses the contents of the registers left by the previous code.
     beq.s       <addr>           ; [OK, return]
     ; [Not OK, corrupt the number of enemies]
 
-In the end, Terminator Kid's crack contains 4 checksum routines that
+In the end, *Terminator Kid*'s crack contains **4** checksum routines that
 are still active and that make the game crash at different stages.
 
-> Note that Terminator Kid's crack images available on the Internet are
+> Note that *Terminator Kid*'s crack images available on the Internet are
 > all corrupt (several tracks contain only garbage), which also causes
 > crashes during the game.  
 > Typically, the last 2 levels of the game and the secret passages cannot

@@ -14,10 +14,10 @@ It has been developed by
 **Illegal** (*[The Replicants](https://demozoo.org/groups/31491)*),
 **Altair** (*[VMAX](https://demozoo.org/groups/31500)*),
 **Zarathustra** (*[The Invisibles](https://demozoo.org/groups/39198)*)
-and some members of *[SYNC](https://demozoo.org/groups/2256)*.  
+and **Redhead** (*[SYNC](https://demozoo.org/groups/2256)*).  
 It is present on all software published by
 *[Expose Software](http://www.atarimania.com/pgelstsoft.awp?system=S&publisher=2865)*:
-**Audio Sculpture** (all versions), **No Buddies Land** and **Son Shu Si**.
+**Audio Sculpture** (all versions), **No Buddies Land** and **Son Shu Shi**.
 
 The cracking tutorial provided here focuses on the hardware mechanisms used
 by the IPL copy-protection, that is, how tracks and sectors are physically
@@ -33,7 +33,7 @@ The technical terms used to classify the protection mechanisms are explained in 
 > the protection unbreakable on a native Atari ST (of course, such software
 > protection mechanisms are ineffective on today's emulator debuggers).
 > This software part is not addressed here, but a detailed description
-> can be found in the documented crack of Son Shu Si. See *[here](../SonShuSi/IPL.md)*!
+> can be found in the documented crack of Son Shu Shi. See *[here](../SonShuSi/IPL.md)*!
 
 In order to crack Audio Sculpture 1.5, the original copy
 (*[AudioSculpture1-5.STX](../../../raw/master/AudioS15/AudioSculpture1-5.STX)*)
