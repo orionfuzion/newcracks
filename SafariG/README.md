@@ -1,11 +1,13 @@
 # Safari Guns with game intro & multi-languages support
 
-Cracked, mega-trained, partly-filed, packed, linked, ramdisk,
-bug-fixed, 512KB, hard-drive and Falcon/TT/CT60 support.
+![Screenshot of the title screen of Safari Guns](title.png)
+
+**Cracked, mega-trained, partly-filed, packed, linked, ramdisk,
+bug-fixed, 512KB, hard-drive and Falcon/TT/CT60 support.**
 
 In this folder,
-- *[release](release)* contains the floppy image of the crack.
-- *[src](src)* provides the source files of the crack,
+- ***[release](release)*** contains the floppy image of the crack.
+- ***[src](src)*** provides the source files of the crack,
 with plenty of explanations and comments.
 
 Here are the technical details about
@@ -14,7 +16,7 @@ including the copy-protection, the description of various bugs in the
 game that needed to be fixed, and the work needed to support the Falcon
 machine.
 
-Please look at *[src/LOADER.S](src/LOADER.S)* for the implementation of all
+Please look at ***[src/LOADER.S](src/LOADER.S)*** for the implementation of all
 the stuffs described hereafter.
 
 *Safari Guns* comes on two floppy disks:
