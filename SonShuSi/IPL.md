@@ -39,12 +39,12 @@ It is composed of two distinct and complementary parts:
 2. Several **checksum routines** are hidden in the main program of the game.   
    These routines are executed during the game and check the magic values
    written in low memory by the IPL.  
-   If magic values are missing or incorrect, the game code or its data
-   are corrupted to malfunction or even crash.  
+   If magic values are missing or incorrect, the game code or data is
+   corrupted to cause a malfunction or even a crash.  
    This ensures that the IPL has not been removed by a hacker.
 
-   *Son Shu Shi* uses an additional protection mechanism: the contents of
-   the two floppy disks are fully encrypted.  
+   *Son Shu Shi* uses an additional protection mechanism: the content of
+   the two floppy disks is fully encrypted.  
    Decryption is performed on-the-fly when disk tracks are loaded; the
    game does not use the standard
    *[FAT12](https://en.wikipedia.org/wiki/File_Allocation_Table#FAT12)*
@@ -53,8 +53,8 @@ It is composed of two distinct and complementary parts:
 
 ## The IPL
 
-This section details the software mechanisms used in the IPL to make cracking
-the game almost impossible using a native Atari ST debugger.
+This section details the software mechanisms used in the IPL to make
+game cracking almost impossible using a native Atari ST debugger.
 
 > It also briefly depicts the hardware mechanisms used by the copy-protection,
 > that is, how tracks and sectors are physically protected and verified by the IPL.  
@@ -70,10 +70,9 @@ the game almost impossible using a native Atari ST debugger.
 The IPL consists of **three** different protections assembled into
 a single mega-protection whose complete execution takes **15 seconds**!
 
-All of the hardware mechanisms required by a native debugger (management
-of CPU exceptions, use of keyboard or screen...) are highjacked or
-neutralized by the IPL code, making it almost impossible to use such
-a debugger to hack the IPL.  
+All hardware mechanisms necessary for a native debugger to run (CPU exception
+handling, keyboard or screen usage...) are hijacked or neutralized by the IPL
+code, which makes it almost impossible to use such a debugger to hack the IPL.
 
 For instance, the code of the three parts of the IPL is encrypted and
 decrypted on-the-fly using different techniques, such as *trace vector
@@ -145,12 +144,12 @@ format prevented its content from being copied.
      to point to a memory area suitable for the debugger.
 
    The protection starts with a funny trick in the boot sector:
-   the boot sector code discreetly checks the content of the
+   the boot sector code discreetly checks the content of
    *PSG register 14 (Port A)* to determine which sector will be
    loaded and then executed.  
 
    Normally, when the boot sector is executed by the *TOS* at startup,
-   the *PSG register 14* indicates that drive *A* and side *0* are selected.
+   *PSG register 14* indicates that drive *A* and side *0* are selected.
    This is because the boot sector has just been read and the drive is
    still in use (the motor is still running) when the boot sector starts
    executing.  
@@ -159,7 +158,7 @@ format prevented its content from being copied.
    **manually** into memory before it can be debugged. And because this
    step is manual, the time between loading the boot sector and starting
    the debugging process is long enough for the drive motor to shut down.
-   In such a case, the *PSG register 14* indicates that the drive *A* is
+   In such a case, *PSG register 14* indicates that the drive *A* is
    no longer selected.  
 
    This is detected by the protection code executed in the boot sector,
@@ -183,13 +182,13 @@ format prevented its content from being copied.
    That's **evil**!
 
    In the same vein, in the middle of that protection, the code jumps
-   to a memory area that contains no code (only zeroes), just to trick
+   to a memory area that contains no code (only zeroes), just to fool
    the hacker into thinking the execution failed.
 
    The protection checks that the disk is an original copy as follows:
    a first protected track stored on disk#1 contains *invalid data in gap*
    (**IDG**) and *hidden data in gap* (**HDG**) at the start of the track.  
-   The protection verifies that these data are present, and crashes
+   The protection verifies that the expected data is present, and crashes
    otherwise.
 
    After checking the protected track, the second part of the IPL is
@@ -230,9 +229,9 @@ format prevented its content from being copied.
    a second protected track stored on disk#1 contains *invalid data in
    gap* (**IDG**) and *hidden data in gap* (**HDG**) at the start and at the end
    of the track.  
-   The protection verifies that the said data are present at the **start**
+   The protection verifies that the said data is present at the **start**
    of the track, and crashes otherwise.  
-   The *hidden data in gap* at the **end** of the track are checked later,
+   The *hidden data in gap* at the **end** of the track is checked later,
    in the third part of the IPL.
 
    The protected track has a special format: it has 5 sectors of 1024
@@ -309,7 +308,7 @@ format prevented its content from being copied.
    - The protected track which is checked in the second part is checked
      again here, but this time the code verifies the *hidden data in gap*
      at the **end** of the track.  
-     If the data are missing, the protection crashes.
+     If the expected data is missing, the protection crashes.
 
    - A third protected track on disk#1 is checked. It uses several Hardware
      protection mechanisms: *hidden data in gap* (**HDG**), *sector data with
@@ -319,7 +318,7 @@ format prevented its content from being copied.
      starting from a *$c2* sync mark (thus covering most of the track).
      This checksum is used to decrypt a small routine executed later.
      Therefore, if the checksum is invalid (in case of a copy), the
-     protection will crash.
+     routine will not be decoded correctly and will crash.
 
      This track also uses a very special protection scheme, probably
      never used on Atari ST: **write splice inside sector** (**SIS**).
@@ -361,7 +360,7 @@ a debugger.
 
 The following messages are in plain text (unencrypted) on the disk:
 
-1. 
+1.
         TOKI-LOADER
 2.
         Initial Program load [v2.0]  Tm 1989,1990 ThunderSoft Development
@@ -419,8 +418,8 @@ hidden in the main program of the game (**11** routines in the case of
 *Son Shu Shi*).  
 These routines are executed during the game and check the magic values
 written in low memory by the IPL.  
-If magic values are missing or incorrect, the game code or its data are
-corrupted to malfunction or even crash.  
+If magic values are missing or incorrect, the game code or data is
+corrupted to cause a malfunction or even a crash.  
 This ensures that the IPL has not been removed by a hacker.
 
 The trick is that the magic values are not just constant values, they are
@@ -472,13 +471,13 @@ simply reading it.
 Below is a checksum routine taken from *Son Shu Shi*.  
 It is called every time special enemies or objects appear on the
 screen during the game.  
-It checks a magic byte stored at *$4aa*, that is computed using
-the *memory banks* configuration (*$ff8001*).  
-If the check fails (if the magic byte does not correspond to a
-machine with 4MB of RAM), the game data are corrupted: the number
-of enemies currently on the screen is reset to a random number,
-which causes unexpected effects ranging from changing the
-number of enemies on the screen to a crash of the game.
+This checksum routine verifies the magic byte stored at *$4aa*,
+that was calculated by the IPL using the value of the *memory banks*
+configuration register (*$ff8001*). If the magic byte does not match 
+the current value of *$ff8001* the game data is corrupted: the number
+of enemies currently on the screen is reset to a random number, which
+causes unexpected effects ranging from changing the number of enemies
+on the screen to a crash of the game.
 
 The following snippet shows how checksum routines are hidden
 inside the code of the game. In this case, the checksum routine
@@ -493,10 +492,10 @@ uses the contents of the registers left by the previous code.
     dbf         d0,.1
     lsr.w       #2,d0            ; d0=$3fff
     adda.w      d0,a0            ; a0=$ffffc25f
-    move.b      $424b(a0),d0     ; $4aa ($0a = 4MB)
-    sub.b       -$425e(a0),d0    ; $ffff8001 ($0a = 4MB)
-    beq.s       <addr>           ; [OK, return]
-    ; [Not OK, corrupt the number of enemies]
+    move.b      $424b(a0),d0     ; [$4aa] = xx MB
+    sub.b       -$425e(a0),d0    ; [$ffff8001] = xx MB
+    beq.s       <addr>           ; Both values are the same => return
+    ; Otherwise => corrupt the number of enemies
 
 In the end, *Terminator Kid*'s crack contains **4** checksum routines that
 are still active and that make the game crash at different stages.
