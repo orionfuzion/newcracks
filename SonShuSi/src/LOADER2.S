@@ -1962,7 +1962,7 @@ FI_DISK_NR_OFF  =	(fi_disk_nr-fileops_start)
 *
 * Public routines:
 * - depack()
-* - apply_fixes()
+* - fixes_tbl
 * - decrunch_routine() / dec_nrv2b()
 *
 * Doc:
@@ -2355,6 +2355,8 @@ DEPACK_LEN                 =	(depack_end-depack_start)
 *     on the screen at the same time.
 *   . Fix an out-of-bounds array access when 6 or more weapon bonuses
 *     appear on the screen at the same time.
+*   . Fix an underflow error that occurs in the state machine used to
+*     display enemy animations.
 *
 * Game modifications are implemented as:
 *
@@ -2513,8 +2515,14 @@ DEPACK_LEN                 =	(depack_end-depack_start)
 * - copy_screen_fix()
 * - weapon_fire_fix()
 * - weapon_bonus_fix()
+* - anims_underflow_fix()
 * - movep_emul()
-* - overscan_fix_tbl
+* - movep_patch1()
+* - movep_patch2()
+* - movep_patch3()
+* - crash_handlers_start
+* - overscan_fix_stop_tbl
+* - overscan_fix_mste_tbl
 * - keyb_fix_tbl (improved ACIA/IKBD routines)
 * - mus_fix_tbl (improved sample replay routines)
 * - rasters_tbl (optimized rasters support for the high score screen)
@@ -3495,8 +3503,8 @@ inst_crash_handlers
 	;   Falcon, TT, CT60).
 	; - Support legacy machines with a 60Hz monitor.
 	; It is installed in low memory in the [$1c0-$800] area.
-	; See overscan_fix_tbl for implementation and detailed
-	; explanations.
+	; See overscan_fix_stop_tbl and overscan_fix_mste_tbl
+	; for implementation and detailed explanations.
 inst_overscan_fix
 	ifeq	FORCE_OVERSCAN_FIX
 
@@ -8493,6 +8501,7 @@ game_boot
 * - setup_trainer()
 * - prepare_drv_a()
 * - prepare_drv_hd()
+* - get_tpa_end()
 *
 ***************************************************************************
 

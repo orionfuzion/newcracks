@@ -3620,10 +3620,11 @@ extintro_executed
 	; Internal intro: print a text using fancy fonts
 	; and handle trainer options.
 	;
-	; If the main cracktro has been executed, then a full
+	; If the main cracktro has been executed successfully,
+	; then a very short text offering to choose the trainer
+	; mode is printed.
+	; If the execution of the main cracktro failed, a full
 	; text with all credits is printed.
-	; Otherwise, only a very short text offering to choose
-	; the trainer mode is printed.
 	;
 	; Called from supexec.
 	;

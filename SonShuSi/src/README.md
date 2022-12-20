@@ -26,6 +26,11 @@ with the loader.
 Simple example illustrating how to use the cracktro shell (as the source
 code of the real cracktros is not provided).
 
+- ***HIDDEN.TXT***  
+The full text of the scroller of the hidden intro coded by Fury, with nostalgic
+testimonials from 20 former Replicants members and friends who share their memories
+and give news.
+
 - ***SSS1.LNK***  
 Library file containing the game files from disk#1, packed and linked together.
 

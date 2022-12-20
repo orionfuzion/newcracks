@@ -1,0 +1,295 @@
+﻿In The Summer Of 1988…🔇
+            🔇
+            🔇
+           🔇
+🤘  The Replicants  🤘  🔇
+                🤜🤏🎶🛑🛑🛑 
+Was Founded When The Three Groups A-Team, Hofa And Shogun Decided To Join Forces And Create The Best Cracking Group On The Atari ST. 
+                🔇
+                🔇
+In The Summer Of 1993🎶, The Replicants Adventure Stopped Abruptly After Ellfire, The Swapper Of The Group, Got Busted For Forgery🤏.
+                🔇
+                🔇
+The ST Was Dying🎶 And The Group Was Trying To Switch To New Machines Like The SNES… But🤜 It Never Happened. The 🖕Cops🖕 Ended🤜 Our Business. 
+                🔇
+                🔇
+During These 5 Years🎶, The Replicants Cracked Over 🤘800🤘 Titles On The Atari ST🤏! Many Sceners Joined And Left The Group. More Than 30 Members In Total! 
+                🔇
+                🔇
+Snake, Dom, Excalibur🤏, Fury, Illegal, Maxi, Cameo…🎶 All Legendary Nicknames! Guess What? They Are All Here In This Scrolltext To Share Their Memories And Give Us News!
+                🔇
+                🔇
+But First…🎶 
+                🔇
+A Little Note On The Time Discrepancies You May Notice In These Memories. The Crack And Main Intro🎶 Have Been Ready For Over 2 Years! So Have The Member & Friends Memories Collected🤏. But As We Were Looking For A Way To Present It, The Idea Of Fury Writing ‘a little throwback something’ Came Into The Picture. Very Much So As COVID Hit! At First To Reuse Old Code But Quickly Moving Into Full Blown Return To 68k Love And Writing It All Fresh. It Took Longer Than Planned. It Always Does When Your Entire Life Isn't All About Writing Demos. You End Up Adding More ‘little’ Things Like Ghosts Straight From Dom's Old Sources. We Kept At It… And Here It Is! It's Funny To Think This Intro Took Almost As Long As Fury's Parallel Project To Be Released in 2023 (hint - it's got a Jedi and a BD droid). We Didn't Want To Touch Up The Memories But 30 Is Now 32, Marco's Crackers Book Is Now Released… You Get The Idea!
+                🔇🤜
+                🔇
+Credits For The ‘Ghosts, Please Wait’…🎶
+                🔇
+                🔇
+[Code] Fury + Orion \ [Graphics] Dom's Original + Dieu Remix🎶
+                🔇
+An Hommage To One Of The Replicants Most Famous Intro With A Little Spin. It Had To Fit In Almost No Memory While The TOS Loads… That Was An Interesting Problem!
+                🔇
+                🔇
+Credits For This ‘Throwback To Old Times Intro’…🎶
+                🔇
+                🔇
+[Code] Fury \ [Graphics] Jade \ [Music] DMASc \ […Time…] 2 Years!
+                🔇
+                🔇
+Long Gone Are The Days I Could Bang Out An Intro🤜🎶 In A Weekend 😂. Work#Life#Work#Life🤜🤏… Conspired Against Finishing What Started As A COVID ‘Let's Do A Simple Hidden Scrolltext For The Release’. But I 🤘DID🤘 Finish!🤜 Featuring All 100% Fresh Code & No Modern Tricks - That Will Be Sometime In The Future!? Maybe? - A Simple Design Like For Old Times: Logo, Palette Switch, Stars And A Fully Simulated Springy Scroller Running On All 16/32 Atari Down To 512KB - That Limit Was The Most Time Consuming Nut To Crack (ha!). In The End I Had To Re-re-re-re-write The Code To Allow For Effect Buffers, GFX, Sound, Screens And This Rather Large 38KB+ Scrolltext To Fit In The 430KB Alloted By The TOS & Game Loader With... 1KB To ‘Spare’. Oh Yes… You Can Run Straight Into Son Shu Shi By Pressing Space!
+                🤜🔇
+                🔇
+Now… Let's Dive Into Memories… 
+                🔇
+                🔇
+Orion           🔇
+            🤜🤏🎶🛑🛑🛑
+Hi Fans! 30 Years Later, I’M Still Cracking For The Replicants! Cracking Is Good For You! At Least Cracking Was Good For Me! I Certainly Owe The Job I Have Today To This Amazing Experience 😜. Indeed, I Had The Chance To Do Long Studies And Today I Have A Job In The Field Of Embedded Operating Systems, Meaning That I Still Have My Hands On The Keyboard And My Head In Assembly Code! (even if it is now arm and no longer 68000). The Replicants Experience Was Decisive For This, Because This Learning In The Field Made The Difference. I Would Like To Thank Cameo For Teaching Me Cracking Techniques At The Time, And Ellfire For Making The Fuzion And Replicants Adventure Possible! Many Thanks, My Friends, It Changed My Life! And Of Course A Huge Thank-You To The Founders Of The Crew : Snake, <<R.Al>>, Dom, Excalibur And Rank Xerox : When I Was A 15-Year-Old Teenager, You Made Me Dream With Your Superb Cracktros And Made Me Want To Join You In This Unique Adventure. When It Happened In 1992, It Was A Dream Come True. You Created This Group And I Saw Its End, But Today The Replicants Are Back In The Spotlight With A New Crack And This Revival Intro! I Will Always Cherish This Past Of Fun, Carefreeness, Constructive Rivalry And Fellowship And I Thank All Enthusiasts Who Contribute To Keep The Atari ST Scene And Spirit Alive! Above All, I Warmly Thank Kelly.X And Cooper For Supporting The Replicants Over The Years And For Making It Possible For All Of Us To Meet Again Today. In 2016, After 25 Years, I Decided To Come Back And Help Those Responsible For Preserving The Atari ST Heritage. Based On My Past Experience, I Have Focused On Documenting Cracking Techniques And Copy Protection. You Can Find All My Work On My Github: Https://Github.Com/Orionfuzion. And You Will Find More Information And Off-The-Record Anecdotes In The Book Of Marco Breddin: The Crackers!  See Ya For A Next Crack! The Replicants Rulez For Ever… Orion, June 2020.
+
+                🔇
+                🔇
+Illegal         🔇
+                🤜🤏🎶🛑🛑🛑
+Yo Dudes, Illegal Is Too Legit To Quit, 30 Years After And Yes, The Fucking Best Replicants Are Still Standing, Until The End Of This Collapsing World !. In This Period Of Coronavirus The Replicants Come Back From The Tomb To Haunt The Atari ST Scene And Give A Vibrant Testimony Of Respect And Memory To This Special Opus  ‘Son Su Shi’. It Is No Secret That Pascal De France Aka Zarathustra Has Left Us Years Ago, He Played A Major Role In This Piece Of Art And I Want To Pay Tribute To Him How Much I Appreciated And Loved Him, He Was A Man Of Extraordinary Culture And Intelligence. Rest In Peace, Dear Friend We All Regret Your Absence. We Worked Together On The Game Protection, This Is The Proof Of A Rich Period Of Sharing Experiences And Code Altogether. One Night, Near Place Monge, In Paris, Was Born A Game Who Would Never Get A Correct Crack Before 2022. Imagine… Pride… For Us We Could Not Dream Of That Success Pascal. Yes We Did It. You Did It. Greets Also Go To Fred, The Hardware Protection Creator, Who I Remember Was As  Passionate And Nice As He Could Be Scary Too Sometimes… Enjoy My Friend!. I Want To Thank And Greet Jace (Lolo) And Orion You Are My Friends You Made A Huge And Beautiful Work Of Analytics To Resurrect The Memory Of These Times. Times Of Freedom, Creativity, Friendship And Happiness That I Never Lived Again In My Life. This Is A Real Gift, An Important Contribution To Atari History. But Let’S Wrap On This And Be Back To Illegal Style : I Am Alive, I Am A Free Spirit, I Am Happy To Give My Contribution To This Outstanding Work. I Am Still As Legit As I’Ve Ever Been And Fuck You Especially If You Think It Is Not The Case !. Yes. It Is Good To Write For An Intro Again. May Atari ST Shine In Our Hearts For Eternity. Kisses Go To My Recent Contacts Or Encounters With My Old Fellows Eidolon, Snake, But Also People I Have A Deep Respect For Like Yoda Or Mad Jochen Hippel Max And All ‘Fucking Sceners’ Of Fb That I Love, You Know The List Is Too Long. I Love Love My Friends Of The Scene, And I Love You All. I Send You Positivity At Maximum Level… Illegal Is Good For You !
+
+                🔇
+                🔇
+Oya Shivo         🔇
+                🤜🤏🎶🛑🛑🛑
+Hi Dudes ! I Spent Very Little Time In The Replicants, I Was Cracking Mostly For Myself Games I Bought, To Copy Them Onto 5"1/4 Floppies Or, Later On, To Run Them From My Megafile 30 Or On My Tt, But I Shared My Cracks On Minitel Forums, Which Led Snake To Contact Me To Join The Replicants. I Went To Only One Copy Party In Douais In 1988, Where I Released My Only Intro, Which I Could Never Find Again, Too Bad… I Was Studying And Started To Work The Year After, And Mostly Worked On The 3d Routines Of My Gen4 Demo Which Led Me To Write Articles For ST Magazine, And Later On To Work With Infogrames For 11 Years, Until It Changed Its Name For… Atari ! I Probably Jumped In Too Late, But Still Remember The Fun, Passion And Skills Of My Replicants Fellows. I Experienced Many Programming Languages, On Most Games Platforms Until 2010, But Never Forgot The ST And The 68k, I Still Could Probably Tell You The Cycles Count For Each Instruction. But Time Goes By, I Left The Game Industry 10 Years Ago, And Was So Glad That Orion Contacted Me, Even If I Feel My Contribution To The Replicants Was Really Small. Nevertheless I Still Hope I Was A Bigger Atari  ST Supporter Thanks To My Articles Than A Famous Cracker, But Man, Even For A Short Period Of Time, I Am So Proud To Have Been One Of Them ! My Kisses Go To All The People I Met (even if they don’t remember me) And Especially To Snake Who Made This Possible, And Orion Who Reminded Me Of My Past And Short Glory, And To All The Famous Ones I Never Met But Read Their Names In Marvelous Scroll Texts. Please Support Marco’S Book, History Needs To Be Remembered. 
+Clr.L -(A7)
+Trap #1
+
+                🔇
+                🔇
+Fury           🔇
+                🤜🤏🎶🛑🛑🛑
+30 Years? Has It Been 30 Years? Why 30 Years? As I Write This, 30 Years Ago Was The Last Year I Was A Member Of The Replicants Before Branching Out With Legacy And Focusing On Writing Demos. But The Replicants… The Replicants Will Always Be At The Forefront. How Can It Not Be? The Sheer Insanity Of Those Times When Snake Would Come To My Place With His Hoard Of New Games After Lunch, Crack Them In The Afternoon, Leaving Me The Night To Put Together A New Intro From What I Had Been Working On During The Previous Week And Finishing The Cracks With Intro And Sometimes Trainer, Ready To Ship By The Afternoon. No Wonder The Replicants Were At The Top… We Were Insane! And 30 Years Later… Still Going Strong… I Guess It Was True… ‘Cracking Is Good For You!’… Fury Off🤜!
+
+                🔇
+                🔇
+Cameo          🔇
+                🤜🤏🎶🛑🛑🛑
+A Good Soundchip, A Good Play And A Good Protection. Back To The Future, Cameo Is On The Keyboard. 30 Years Of Silence But Always There For The Replicants.  I Especially Want To Thank Orion For All His Work Over The Years.This Man Is Crazy…Memories Come Back And Maybe You’Ll See Cameo Again Very Soon.The Real Ones Know. In These Troubled Times, Take Care Of Yourself And Never Forget That The Replicants Rules. Cameo Signing Off.
+
+                🔇
+                🔇
+Ellfire         🔇
+                🤜🤏🎶🛑🛑🛑
+Hi Folks! There We Go Again… More Than 30 Years Now Since I Was Typing Such Scrolltext! In Another Life, I Was Dragon From Fuzion, Then Ellfire From Both Fuzion And The Replicants! We Used To Rule The ST Scene (with others, let's be honest 😊) And We Are Still Alive On The Net And Youtube! Was An Amazing Period And A Lot Of Fun – We Have Been Very Lucky To Be Part Of The Pioneers Living This Early Stage Of Computers… Now Working As Hr In Multinational Companies, But Still Passionate About New Technologies… If You Took The Time To Read This, It Tells That ST, Cracks, Cds, Jochen Hippel Or David Whittaker Still  Rings A Bell For You! So Enjoy And Have Fun! No More Fuck To, Teenager Time Is Over 😊 Time To Wrap As We Used To Say…
+
+                🔇
+                🔇
+Snake          🔇
+                🤜🤏🎶🛑🛑🛑
+<Error 404 🤔 Entry Lost>
+            🤜🛑🛑  🔇🤏🤏
+                🔇
+                🔇
+Black Angel/Mit (NeXT) 🔇
+                🤜🤏🎶🛑🛑🛑
+Thanks To Orion For His Help And Resilience Bringing Most Of Us Back Together! And Congrat To Him For His Patience And Tenacity Breaking Up A 30 Years Old Protection On Atari ST!
+The Fucking Best Replicants Striked Again!
+I Was A Young Cracker & Coder Who Did Learn So Much From Them And Had The Privilege To Release A Few Cracks Under That Legendary Name. 
+It Was A Generation Or Two Ago.  It Was A Time When ‘Internet’ Was Just A Gossip For Most People, When Bbs Access Was The True Power.
+Respects To All The Geeks From That Time: The Ones I Laughed, Cracked, Code And Partied With, The Ones I Stupidly Insulted. 
+Special Respect To Zarathustra, A Dear Friend Who Left Too Early, I'm Glad This Small Contribution Of Mine With An Old Floppy (which travelled around the world) Helped Bring Back A Piece Of His Work And Memory Nowadays. 
+Respect To The Game Developers Whom We Too Often Forgot For The Glory Of Our Crack/Art.
+Special Thanks For Zae Without Whom I Would Never Have Gotten Close To That Band Of Fucking Legends! 68k Rulez!
+
+                🔇
+                🔇
+Zae (NeXT)       🔇
+                🤜🤏🎶🛑🛑🛑
+Just To Be Sure I Got This Right :
+I’Ve Never Been A Member Of The Replicants…
+This Game Was Published By My Company…
+I’M Writing A Text To Celebrate It’S Cracked Version…
+…………………………🤔……………………….
+That’S Awesooooooooome ! 
+Awesome Because It Brings Me Back To The Mindset That Prevailed During The Creation Of Expose: Bring Together The Best Talents On The Planet While Having Fun Making Great Products.
+Awesome Because That Period Made Most Of Us What We Are Today.
+Awesome Because What We've Experienced And Achieved Is Priceless.
+Awesome Because 30-Year-Old Friendships Are Still Alive Today (poke Olaf & Fab !).
+And To Conclude……………. Dear Replicants……………. My Fellow Brothers…………….  NeXT Rulez Forever You Bunch Of Dumb Pussy Lamers! It Took You 30 Years To Crack Our Game Hahahahahahahahahahahahahahaha!
+I ❤ U Guys 😉
+
+                🔇
+                🔇
+Excalibur         🔇
+                🤜🤏🎶🛑🛑🛑
+Cracking Is Still Good For You 30 Years Later… And Guess What : I Can Finally Write An English Sentence Without The Help Of Rank Xerox!!! I Had A Dreamed Teenager Life Thanks To The Replicants. We Were The Alchemists Of The Video Game Protections!! We Were Transmuting Lead Into Gold Mainly Because Those Challenges Were Addicting. I Did Not Know That This First Magical Experience Would Be Just The Beginning! I Still Worship Embedded Software And Formal Methods : There Are So Many Philosopher Stones To Look For In The Universe Of Computers…The Quest Goes On…  Special Thanks To Rank Xerox, Ray, Dom And Snake And The Replicants Team. 
+
+                🔇
+                🔇
+Rank Xerox        🔇
+                🤜🤏🎶🛑🛑🛑
+Gooooood Morning Replicants! 30 Years, Crazy, That Was A Long Journey. Hope You Are All Doing Well. Can't Express How Much I Miss This Good Old Time. We Were Fucking Great And Still Are! As A Founding Member, My Gratitude Goes To All Those Who Have Brilliantly Succeeded Us, Carrying The Replicant Flag High For Many Years And Making This Group A Legend! Now My Special And Very Personal Greetings Go To My Old Buddy Excalibur: The Union Demo, What A Fucking Achievement! Hope To See You In California As Soon As This Lockdown Is Over. My Best Greetings To All Replicants Members Especially Hofa (Snake, <<R.Al>>, Dom), TEX, TCB, STCS - Actarus is the best swapper ever imho, Tsunoo And All Those I’Ve Forgotten. And Never Forget: Cracking Is Good For You!
+
+                🔇
+                🔇
+Maxx-Out        🔇
+                🤜🤏🎶🛑🛑🛑
+This Period Was Definitely The Start Of 30+ Years Of Code ! It’S Far Away In My Memory But I Will Always Remember Coding Cracktro With My Great Friend Maxi Or This Strange And Exciting Journey In Germany For Icc #1 Where Snake (And Cobra ?!?)  Were Hacking The German Street Lamps By Shaking Them. Then I Quickly Moved On Falcon To Code Eko 3d Demos And A Game Named H2o, Then On Pc To Code 3d Engines. In 1997 I Worked Some Months For A French Studio But Quickly Resigned To Build A New Studio With My Friends : Eko Software. Now, Eko Has Developed Between 30 To 40 Pc And Console Games And I Hope We’Ll Continue For A Bit More 😊 Take Care Survivors !
+
+                🔇
+                🔇
+Maxi          🔇
+                🤜🤏🎶🛑🛑🛑
+Hi To All Atari ST Fans, 29 Years Of Silence But I Never Stop Thinking Of That Wonderful Time.
+I Was So Proud To Be Asked Joining The Replicants By My Mentor Dom Back In 1989. It Lasted 2 Years Of Cracks And Coding And Discovering Some Glitch And New Features On This Awesome ST/STE. I Did Some Cracks Also On Amiga To Help Paradox And Later For The Fun On Pc But My Heart Still Goes To The Pure Assembler On Atari. No Coprocessor, Just The Perfect Optimisation ! That Was So Hot To Be In The World Best Fucking Best Group. The Replicants Always Ruled The ST Scene.
+
+The Empire Were Not A Real Challenger Until #Illegal Joined Them. He Was Kind Of My Nemesis. But I Met Him At A Convention, Such A Cool Guy And Guess ? Of Course He Joined Us In The Replicants Soon After With My Great Pals Dom And Snake (hello guys!). We Were Out Of Competitors. We Were A Few And Very Active At That Moment But I Send A Giant Thanx To All Previous Members And To Those Who Succeeded Us. I Hope Everyone Is Safe Now And Sorry Not Being In Touch For So Long.
+
+I Cannot Tell What I Did After That Time As It Is Classified But Now I Am 50 And I No Longer
+Need To Work But I Still Am At Home For A Bit And For Pleasure And Personal Projects.
+So My Life Is Good With My Family And I Remember Everyone That I Enjoyed To Encounter.
+Certainly The Most Impressive One Was P.D.F. (Pascal De France). He Was So Kind And A Welcoming Guy And With No Doubt The Best In His Coding Domain: First On Falcon Even Before The Falcon (R.I.P my dear friend). And How Could I Write About This Time Without Speaking Of My Great Friend Maxx-Out. We Spent So Much Time Together To Write Innovating Demos With 3d Moving Giant Text Logo (such a pleasure to calculate sin and cos and others in assembler) And Add Them Into My New Cracktros Where I Removed Borders And Other Cool Stuffs. I Just Discovered That He Is Now The Owner/Boss Of An International Game Development Company. Impressive, So Proud Of Him ! We Went To All Coding Party Or Underground Crack Meetings Together And I Will Always Remember The Icc In Germany Were I Met The Best Coding Demo Makers : TCB. The Guy Just Wrote A Demo In One Pass, Coding Non Stop During More Than 24h Without Compiling Once ! Everyone Present At That Convention Was Waiting To See It Or To See What He Was Intending To Create But He Only Compiled It One Time When Completely Finished. One Compilation, No Errors, Working Perfectly Right Away. It Was Done ! The Coding Contest Was Won Even If It Remains One Day. During That Time I Was Showing My Cracking Skills To The Rest Of Them As They Developed A Game And A So Called Unbeatable Protection. With The Last Software And My Tools, It Was Done In Less Than An Hour. With The New Dom Cracking Hardware Cartridge It Was Done In Less Than One Minute. They Were Down ! Of Course It Was A Friend's Game And We Never Released It.
+
+Cracking Became Too Easy With Time And Without Real Challenge (thanx Dom for your hacking cartridge sold to public in 1991 who brought cracking to anyone level). The Demo Maker Program Was Also Too Much. Easy Was The New Way And So I Moved To Another Adventure And To Be Honest, Threats From Companies, Phone Hacking Cards,  Minitel Frauds Were A Bit Too Much Dirty For Me To Get Some Valuable Fame So I Quit. 
+
+I Only Appreciated The Challenging Protections, High Level C Programming Protection, Original
+Copy Program That I Need To Create To Duplicate The Non Conventional Games After Cracking,
+Checksum Hidden And Elegant New Ways Of Cracking Without Modifying Code, Antivirus Program That I Release To Stop The First Boot Sector Virus Discovered To Spread, Studying The First Shrinkers Programs That Leads To Compilations Released (many more games or intros on one disk) But My Favorite Crack Was To Put Protected Directory Games Into Regular Files Like Shinobi And I Remember Such Games Like Dragon's Lair, Maupiti Island, Morteville Manor, Monkey Island And So Much More. Will Probably Enter Into More Details In Marco's Dedicated Cracking Book. I Just Regret One Thing : The Great Rob Northern Protection Was Really Cool But Once I Did Develop A Tool To Remove It, Even When He Pushed A New And Supposedly Harder Version, It Was Only A 1 Minute Work To Open My Program And Sort The Final File Unprotected. The Principle Was Always The Same And The Checkpoints I Put Were Always There To Get A Simple Way Out Of It. Rob Was The One To Bring Some Joy And Fear In Cracking At First… With Time Passing At Cracking, I Gained 2 New Useful Skills : Working Fine In A Very Noisy Environment And Working Great With Deadlines. By That Time, I Only Got 2 Or 3 Hours To Crack A Bunch Of Games Each Day And Add Trainers And New Intros, Modify Texts Before To Copy Them And Send To My Contacts Then To Swappers And Then Bbs In The Night… 
+
+Glad Also To Hear That A Protection Lasted 25 Years And Great Job To All For This Final Release.
+Waiting For The Intro Of This 99% Unbreakable Protection And Thanx To Orion For All Your Work.
+
+I Lived So Much More Adventures After That Time For Nearly 30 Years And Operated In Many
+Different Fields Of Experience And Even Outside Computers. The Replicants And Cracking Was
+Sure One The Best In My Heart And Memories. Am I Still Legit ? I Can Not Tell For Myself.
+I Am For Sure Under Radars Now But I Was … Maxi Of The Replicants.
+Thanx To Boris, Said, <<R.Al>>, And All Others Forgotten (even Freddy) And Fuck To All Lamers And  All Haters In The World..
+
+                🔇
+                🔇
+AVB           🔇
+                🤜🤏🎶🛑🛑🛑
+Hey Guys, This Is No Joke : We Meet Again 30 Years Later ! Who Would Have Believed It?
+We Went Our Separate Ways For So Long That I Can Feel The Weight Of The Years! I Am Now 51 And I Need Glasses. 😜😜😜
+I'm So Happy To Meet You Again, It’S Proof That The Replicants Flame Still Lives In Us.
+Above All, It Was A Human Experience : A Band Of Friends Created By Snake, The Weekends In Arles With Scott And Killersoft.
+I Remember A Weekend With The "Northerners" In Douai, I Met For The First Time Maxi, Dom And Minimax And Also People Who Came From All Over Europe. Then Our Friend Fury Sent An Invitation To His Parents' House In Marseille, A Crazy Stuff Where Every Night We Gate-Crashed The Swimming Pool Of The Residence 😂😂😂😂.
+Memories… There Are So Many… What I Keep Is My Friendship With Franck, Scott And Killersoft And Most Of You.
+Maxi, We Have To Meet In Paris. You Know Where 🤘🤘🤘🤘
+We Have To Finish Our Job!
+I Leave You Now, Hoping For A Great Meeting With You Soon.
+And Don't Forget To Fuck The Lamers… 🖕🖕🖕
+
+Arthur Von Bredenstein
+
+                🔇
+                🔇
+Scott          🔇
+                🤜🤏🎶🛑🛑🛑
+This Is So Weird…
+What A Strange Feeling To Write This Message Which Takes Me Back 30 Years.
+
+We Had So Many Good Times Doing All This Bullshit:
+ - Overnight Train Journeys From Marseille To Paris With The Whole Gang.
+ - Copy-Parties That Looked More Like Crazy Fiestas Than Hard-Working Seminars.
+ - The Competition Between The Crews To Know Who Was The Fastest.
+
+Thanks To Snake For Always Fucking The Mess Everywhere, We Had A Lot Of Fun Playing The Bad Guys!
+
+When I See Today's Teenangers, I Feel So Lucky To Have Experienced All These Unforgettable Moments.
+
+And For The Next Step, Why Not Organize A French Or European Convention In Paris?
+
+                🔇
+                🔇
+Dom           🔇
+                🤜🤏🎶🛑🛑🛑
+The Replicants Adventure Was For Me An Unforgettable And Extraordinary Period Of Friendship, Passion, Nights Falling Asleep At The Keyboard And Craziness: We Were Only Thinking About Cracking !!!
+
+I Love To Tell How We Were Getting Original Games: Elwood Was Working At Tilt And Gen4 (2 french magazines focused on personal computers and video games), Where He Could Get The Latest Games, Then At Gare Du Nord In Paris, He Stuck The Floppies Of The Games Under The Seat Of A Train Bound For Lille (Northern France). He Just Had To Tell Us By Phone The Arrival Time, The Wagon Number, The Seat Number And We Just Had To Collect The Floppies At Lille Station.
+With This Trick, We Only Needed 2 Hours To Crack In Lille The Games Tested By The Magazines The Same Day In Paris!
+
+Another Funny Anecdote: We've Been Contacted By Atari France Who Knew Us Well, To Provide Us With Free Atari Computers (including the famous ST 4096 and the STE) So That We Could Develop Demos On These Machines To Promote The Atari Brand!
+
+I Left The Replicants In 1989 In Order To Create A Software Development Company On Atari, With My Friend Minimax: The Company Eurosoft!
+Our 1st Product Was The ‘Ultimate Ripper’ Cartridge. This Cartridge Was Our 1st Success…
+Our 2nd Second Product Was The D.C.K. (Demo Construction Kit) Developed By Jinx.
+
+Then We Focused On The Creation Of Image Processing, Photo Studio, Scanning And Printing Software.
+Unfortunately The Company Closed In 1993: The Microsoft Tidal Wave Had Arrived.
+
+Currently I Am Technical Director In An IT Company.
+
+See You A Next Time ! 
+
+                🔇
+                🔇
+Minimax         🔇
+                🤜🤏🎶🛑🛑🛑
+30 Years Without Copy Any Atari Floppy Disk !! Incredible !
+The Replicants Adventure Was For Me, Like For Dom, An Unforgettable And Extraordinary Period Of Friendship Too With A Lot Of Very Funny Stories. As Dom Mentioned With Paris-Lille Trains And The Marseille Swimming Pool By Avb, Let Me Give You Others (specials to Snake / R.Al : ‘1,2,3 Vert, Je le savais’, ‘On va les crasser’).
+I Remember All The Nights Falling Asleep In Front Of Fastcopy While The Us Robotics 56k Modem Sent By Little Lulu (from the US) Was Sending Cracks To The Us Using Calling Cards Numbers. I Think We Were One Of The First Group Using Modem To Send Cracks To The US (quicker than Minitel 1200 Bits/75 Bits !!)
+Remember Also Each Thursday Night Spreading Copies In A Hidden Bar Near Lille With Dom, Have Fun With Atari Fans.
+Then The Day We Have Been Stopped At Calais Customs Because We Bought More Than 5.000 Floppies Disks In Uk. At That Time It Was Impossible To Import More Than 5 Boxes Of 10 Disks Without Paying Duties. So We Paid. Remember All Those Sd Floppies Drilled To Get Hd Ones !
+And What About The Night In Paris Stopped By Police In The Dom Car’S. We Had To Explain Why 4 Guys (one from Marseille, one from Paris and two from Lille) Were Flashing The Headlights (‘Vas-y Flash-le !’) !
+After 5 Years Working With My Friend Dom In Our Firm Eurosoft, I Went Back To University.
+Today I Am Supply-Chain Senior Manager In An Automotive Supplier Company.
+
+                🔇
+                🔇
+Vickers         🔇
+                🤜🤏🎶🛑🛑🛑
+Here Is Some Writings From One Of The Most Obscure Member Of The Replicants, And At The Same Time Some Kind Of A Flash Temporal Member ! 😉
+
+The Replicants Adventure Reminds Me Of My "Thomson For Atari" Screen.. Strange Association Isn't It ?!
+Well, Indeed, This Screen Was Highly Configurable (height, width) Well Beyond Was Reasonable.
+
+(Ok.. Well.. And so what ?!)
+
+This Allowed Me To See Strange Behaviour On The TCB Screen From 1989's "Swedish New Year", The One Starting With White Noise And A Distorted Image On The Top (at least on my screen). The Electronic Beam Was Showing A Net Cut In The Signal, With Some Very Specifics Timings. They Were Removing Right And Left Border With The Image Displayed Earlier Than Normal. So It Was Quite Interesting To Understand How They Were Doing It. So I Looked At The Code And I Was Soon Experiencing With Right, Left And Top Removal. This Led Me To Create An Accessory (running in the background) On The Desktop To Get "Live" Experience With Various Tunings. Having Some Lines With Right/Left Borders Removed Was Quite Disturbing With The Standard Desktop As It Was Moving The Screen Too Much Right Or Too Much Left… I Had To Choose The Right Number To Be Able To Get Something Readable. I Just Was Not Aware That I Was Experiencing Hardware Scrolling… Early Missed Opportunity, Too Bad !
+
+(Ok.. Well.. But still far from Replicants, isn't it ?!)
+
+At That Time, The Most Popular Media In France For Technical Exchange Was Rtel (some kind of BBS running with the famous Minitel). Living In The "Wild Wild West Of France" (A.K.A. Bretagne) Such Information Was Not Easily Available Elsewhere ! Looking For Information On The Subject, I Finally Get In Touch With Dom Who Was Interested In My Current Result. As I Had Sent Him My Code, He Sent Me Back Some Of His Own Source Code ! That Was Very Interesting. This Is What Led Me To Be Invited By Dom To A Copy Party In Northern France Organized By The Replicants (I still have the invitation paper somewhere).
+I Was Supposed To Met Dom At The Train Station To Go To The Defined Place. After Some Time Waiting At The Train Station, I Met With Him And One Of His Friend (let's call him "The Driver"). So.. Imagine Yourself In The Backseat Of Car On A Highway Running Not So Slowly And Suddenly You Hear :
+  The Driver : I Can Do It Now !?
+  Dom : No, Don't Do That !
+  The Driver : There Is Nobody On The Road !
+  Dom : Maybe But It's Not Safe !
+  The Driver : Let's Go !
+Well… When You're Not Prepared, It Is… It Is Definitely… Surprising !
+
+(Ok.. Well.. What's the surprise ?!)
+
+Let's Say It's A 360° Done With The Hand Break.. I Can Assure You, It Is Surprising ! 😉
+Well, Coming From "Wild Wild West Of France" I Thought That Was Some Kind Of "Wild Wild North Of France"'s Tradition ! 😊
+
+Then At The Place, I Met A Lot Of Known/Renowned People Of The "Then" Scene : The Replicants (Dom, Snake, R.Al and last but not least Fury) And Also ST Connexion (Vantage, Krazy Rex And Marlon).
+This Meeting Was Really Fruitful From A Knowledge Perspective (whether technically or personally).
+At Some Time, I Was Installed In Between Dom And Snake. They Were Cracking Games On The Fly In A Industrial Way (maybe with a custom prequel of the not yet released ultimate ripper ?!). And That Was Spectacular ! The Disks Were Moving Between Them Under My Nose As I Was Showing Some Of My Code To Dom.
+Some Weeks Later, I Was Asked By Fury And Snake To Become Member Of The Replicants As A Coder. I Had To Write An Intro For That Purpose. I Had Then A Idea But Needed A Big One Bitplane Image For This Project. Fury Got A Gigantic And Beautiful One With Pulsar From Next Within Specific Dimensions. It Was Algorithmically Really Simple. It Was Rather A Matter Of Precise Timings And Particular Tunings. After Some Time, I Had Some Kind Of A Preview Screen, But With Unpolished Code (or as Nick From TCB told later, quite understandably, "Shitty Code") And Not Supposed Definitive Colors Scheme, With Horizontal Bars Supposed To Be More Animated In A Final Version. The Drawn Phrase "Cracking Is Good For You !" Was Made With Neochrome And Was Supposed To Have A Better Look, But I'm Not An Artist…
+But As I Discovered Later, You Can't Always Polish Your Code As You Would Like And Deadlines Are Deadlines. In A Way, This Was My First Experiment Of The "Good Enough" Way Of Doing Things.
+And That's The Way I Became Member Of The Famous Replicants With A Highly Unpolished Code But Visually High Impacting Intro Thanks To This Incredible Logo.
+
+Fury Was My Main Contact Within The Replicants. We Were Exchanging A Lot On Different Codes And Algorithms. Too Bad We Haven't Had Then The Tools Available Nowadays (Code Versioning, Network Communication and so on). Working With 75/1200 Bd Modem Was Also Really Challenging !
+
+This Is What Led Us To Create Later Legacy But That's Another Story…
+
+Nevertheless Having Been Part Of The Replicants Has Been My Entry Point In The "Computing Age" ! And That's Priceless.
+
+20200601 Jl
+
+                🔇
+                🔇
+Kelly.X (Jace)     🔇
+                🤜🤏🎶🛑🛑🛑
+15 Years! This Is Really The Time It Tooks Me To Get This Result. Remember, In 2005, I Made A Small Replicants Memorial Site. Why? Quite Simply Because I Was One Of Their Biggest Fans, And Certainly Because All The Good Crews Had Theirs, But Not The Replicants. And For Me, It Was A Duty To Maintain The Glory Of Such An Important Crew On Atari ST.
+After Reading Tons Of Scrolling Text, I Had A Story Essay, But Some Of The Replicants Finally Contacted Me To Give More Information. And Like Me, They Wanted To Know What Had Happened To All The Other Members!
+At This Point, We Were Like Real Detectives. Thanks To Cooper, Orion, Illegal, Said And Others For Their Great Help. We Tried So Many Things To Find Snake For Example … And Getting A Response From Dom Was Really A Mess 😊 !!!
+The Quest Is Now Over. We Found Them All. Some People Did Not Want To Participate In This Scroll For Personal Reasons. I Understand Them, But For The Others It's A Real Pleasure To Read News From Our Legends 😊
+Thank You All For Giving Me Motivation, Inspiration! Big Kisses Specially To Illegal & Orion, I Hope We Will Continue The Legend Again And Again!
+
+                🔇
+                🔇
+Cooper          🔇
+                🤜🤏🎶🛑🛑🛑
+Year 90… A Fresh 520 STE Hits My Place…Then A Few Days Later, My First Copied Game Disk From An Unknown Group To Me, Called The Replicants… Months Later, The Disks Collection Grew Up, With A Lot Of Titles Cracked By The Best, And A Majority Of Cracks From The Various Members Of The Best Team To My Eyes ! Years 2000, The ST Fever Faded Away, But Emulators Are Slowly Appearing To Make The Past Shine Again, So Why Not Hunting My Youths' Heroes To Know What These Crack Wizards Became ? A Special Hi To Zae, Who Was The First I Called To Try To Grab Some Clues To Start My Chase ! Then, I Started Quite A Long Quest To Find Real Names Of The Guys, To Find Who Was In Touch With Who, Where Did They Live Then And Now, What Are Their Actual Job, Reading Tilt (a famous french magazine) Offers, Calling Neighbourhoods Of Some Addresses Found Here And There… Quite A Hard Task, But This Investigation Was Far More Easy With Help From People Who Had The Right Contacts ! Thanks A Lot To Jace For His Website Which Was A Source Of Motivation To Go On Finding These Guys, Illegal For Your Many Tips During This Adventure, And A Special Regard To Orion With Whom We Share Our Respective Progress In Investigations ! 2020, A Majority Of The Members Were Found, An Hidden Group Is Created On This Mainstream Social Network, A Lot Of Excellent Anecdotes Were Told, A Book Will Set In Stone The Crazy History Of These Teenagers, And We Can Enjoy A Fresh Crack Of An Incorrectly Cracked Before Game, So Thanks Again To Orion For His Devotion And For His Work, And A Last Greeting To All The Reps For These Sweet Memories ! And As They Say… See You A Next Time 😊
+🔇                                   🔇
